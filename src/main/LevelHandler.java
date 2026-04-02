@@ -3,10 +3,12 @@ package main;
 import java.awt.*;
 
 import Cards.CardHandler;
+import Cards.CardKeeper;
 
 public class LevelHandler
 {
     CardHandler CH = new CardHandler();
+    CardKeeper CK = new CardKeeper();
 
     public LevelHandler()
     {
