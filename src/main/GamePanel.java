@@ -6,6 +6,7 @@ import Cards.CardArt;
 import javax.swing.JPanel;
 import java.awt.*;
 
+
 public class GamePanel extends JPanel implements Runnable
 {
     static final int originalTileSize = 76; //16x16 tile
@@ -25,6 +26,7 @@ public class GamePanel extends JPanel implements Runnable
     
     LevelHandler LevelH;
     KeyHandler KeyH = new KeyHandler();
+    MouseListener MouseH = new MouseListener(this);
     Thread gameThread;
 
     public GamePanel ()
@@ -37,6 +39,8 @@ public class GamePanel extends JPanel implements Runnable
 
         CardArt.load(); //load all card art
         LevelH = new LevelHandler(); //sets up level handler
+        this.addMouseListener(MouseH);        // click events
+        this.addMouseMotionListener(MouseH);
     }
 
     @Override

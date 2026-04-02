@@ -11,9 +11,9 @@ public class Card
     //public int speed;
 
     public BufferedImage sprite;
-    String name;
-    String type;
-    int value;
+    public String name;
+    public String type;
+    public int value;
 
     public int cardWbyPixels = 73;
     public int cardHbyPixels = 103;
@@ -45,5 +45,12 @@ public class Card
         }
 
     }
+
+    public void cardAction()
+    {
+        
+    }
+    
+    
 
 }

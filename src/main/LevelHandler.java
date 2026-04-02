@@ -2,6 +2,8 @@ package main;
 
 import java.awt.*;
 
+import Cards.CardHandler;
+
 public class LevelHandler
 {
     CardHandler CH = new CardHandler();
