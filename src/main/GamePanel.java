@@ -75,7 +75,7 @@ public class GamePanel extends JPanel implements Runnable
 
         Graphics2D g2 = (Graphics2D)g; //what is this
 
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR); //makes pixel art correct
 
         LevelH.updateLevel(g2);
 

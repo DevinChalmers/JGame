@@ -15,8 +15,11 @@ public class Card
     String type;
     int value;
 
-    public int cardW = 73 * GamePanel.scale - GamePanel.shrinkCards;
-    public int cardH = 103 * GamePanel.scale - GamePanel.shrinkCards;
+    public int cardWbyPixels = 73;
+    public int cardHbyPixels = 103;
+
+    public int cardW = cardWbyPixels * GamePanel.scale - GamePanel.shrinkCards;
+    public int cardH = cardWbyPixels * GamePanel.scale - GamePanel.shrinkCards;
 
     public Card(String name, String type, int value, BufferedImage sprite)
     {
