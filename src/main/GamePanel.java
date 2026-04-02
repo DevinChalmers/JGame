@@ -35,8 +35,8 @@ public class GamePanel extends JPanel implements Runnable
         this.addKeyListener(KeyH);
         this.setFocusable(true);
 
-        CardArt.load();
-        LevelH = new LevelHandler();
+        CardArt.load(); //load all card art
+        LevelH = new LevelHandler(); //sets up level handler
     }
 
     @Override

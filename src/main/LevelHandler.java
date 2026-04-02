@@ -13,7 +13,9 @@ public class LevelHandler
 
     public void updateLevel(Graphics2D g2)
     {
-        CH.renderDeck(g2);
+        CH.renderDeck(g2); //renders the hand always
     }
+
+    
 
 }
