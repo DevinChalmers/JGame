@@ -1,13 +1,32 @@
 package Cards;
 import java.awt.*;
 import java.util.ArrayList;
+import Entity.*;
 
 import main.GamePanel;
+import main.TurnHandler;
 
 public class CardHandler
 {
     ArrayList<Card> hand = new ArrayList<>();
     ArrayList<Rectangle> cardBounds = new ArrayList<>(); //this handles card interaction with mouse
+    CardInitializer CK = new CardInitializer(); //initializes Cards
+
+    TurnHandler turnH;
+    Entity player;
+    Entity enemy;
+
+    int hoveredCard = -1;
+    int hoverAmount = 30; //in pixels
+    boolean debugBoundBox;
+
+    public CardHandler(Entity player, Entity enemy, TurnHandler turnH)
+    {
+        this.player = player;
+        this.enemy = enemy;
+        this.turnH = turnH;
+    }
+
 
     public void handleCardBounds(Graphics2D g2)
     {
@@ -20,20 +39,23 @@ public class CardHandler
 
             cardBounds.add(new Rectangle(x, y, hand.get(i).cardW, hand.get(i).cardH)); //creates inv rectangle to use as collision
 
-            g2.setColor(Color.red); //debugging visuals
-            for (Rectangle r : cardBounds) {
-                g2.drawRect(r.x, r.y, r.width, r.height);
+            //debugging visuals
+            if (debugBoundBox) 
+            {
+                g2.setColor(Color.red); 
+                for (Rectangle r : cardBounds) {
+                    g2.drawRect(r.x, r.y, r.width, r.height);
+                }
             }
         }
     }
 
     public void buildDeck()
-    {/*
+    {
         for (int i = 0; i < 5; i++)
         {
-            hand.add(new CardKeeper().randomCard());
+            hand.add(CK.randomCard());
         }
-     */
     }
 
     public void renderDeck(Graphics2D g2)
@@ -53,20 +75,56 @@ public class CardHandler
         return (GamePanel.screenWidth - (hand.size() * hand.get(i).cardW)) / 2 + (i * hand.get(i).cardW);
     }
 
+
     public int calculateCardY(int i)
     {
-        return GamePanel.screenHeight - GamePanel.screenHeight / hand.get(i).y;
+        if (i == hoveredCard)
+        {
+            return GamePanel.screenHeight - GamePanel.screenHeight / (hand.get(i).y) - hoverAmount;
+        }
+        else
+        {
+            return GamePanel.screenHeight - GamePanel.screenHeight / hand.get(i).y;
+        }
     }
 
+
+
+
+
+    //INPUTS
     public void checkCardClick(int mouseX, int mouseY)
     {
+
+            for (int i = 0; i < cardBounds.size(); i++)
+            {
+                if (cardBounds.get(i).contains(mouseX, mouseY) && cardBounds.get(i) != null)
+                {
+                    if (turnH.playerTurn)
+                    {
+                        hand.get(i).cardAction(player, enemy); //passed all information needed for card Action
+                        hand.remove(i); //removes card from hand after click
+                    }
+                    else
+                    {
+                        System.out.println("It is not your turn");
+                    }
+                }
+            }
+    }
+
+
+
+    public void checkCardHover(int mouseX, int mouseY)
+    {
+        hoveredCard = -1; //resets hovered card
         for (int i = 0; i < cardBounds.size(); i++)
         {
-            if (cardBounds.get(i).contains(mouseX, mouseY))
+            if (cardBounds.get(i).contains(mouseX, mouseY) && cardBounds.get(i) != null)
             {
-                hand.get(i).cardAction();
-                hand.remove(i); //removes card from hand after click
+                hoveredCard = i;
             }
+
         }
     }
 }

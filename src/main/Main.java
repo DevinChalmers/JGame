@@ -10,7 +10,6 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("JGame");
-        window.setLocationRelativeTo(null); //what does this do
 
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);

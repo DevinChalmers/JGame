@@ -1,7 +1,6 @@
 package main;
 
 //import Cards.Card;
-import Cards.CardArt;
 
 import javax.swing.JPanel;
 import java.awt.*;
@@ -9,24 +8,22 @@ import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable
 {
-    static final int originalTileSize = 76; //16x16 tile
-    public static final int scale = 3;
+    public static final int scaleWindow = 3; //USE THIS TO SCALE WINDOW
+    public static final int shrinkCards = 30;   //by pixel
 
-
-    public static final int shrinkCards = 0; //by pixel
-
-    public static final int tileSize = originalTileSize * scale; //40 x 40
+    //static final int originalTileSize = 76;
+    //public static final int tileSize = originalTileSize * scaleWindow; //40 x 40
     //final int maxScreenCol = 16;
     //final int maxScreenRow = 12;
 
-    public static final int screenWidth = 450 * scale;  //tileSize * maxScreenCol;
-    public static final int screenHeight = 250 * scale;  //tileSize * maxScreenRow;
+    public static final int screenWidth = 450 * scaleWindow;  //tileSize * maxScreenCol;
+    public static final int screenHeight = 250 * scaleWindow;  //tileSize * maxScreenRow;
 
     final int fps = 60;
     
     LevelHandler LevelH;
     KeyHandler KeyH = new KeyHandler();
-    MouseListener MouseH = new MouseListener(this);
+
     Thread gameThread;
 
     public GamePanel ()
@@ -37,8 +34,10 @@ public class GamePanel extends JPanel implements Runnable
         this.addKeyListener(KeyH);
         this.setFocusable(true);
 
-        CardArt.load(); //load all card art
+        ArtLoader.load(); //load all card art
         LevelH = new LevelHandler(); //sets up level handler
+
+        MouseListener MouseH = new MouseListener(this);
         this.addMouseListener(MouseH);        // click events
         this.addMouseMotionListener(MouseH);
     }
@@ -84,7 +83,6 @@ public class GamePanel extends JPanel implements Runnable
         LevelH.updateLevel(g2);
 
         g2.dispose();
-
     }
 
     public void startGameThread()

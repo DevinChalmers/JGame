@@ -1,6 +1,9 @@
-package Cards;
+package Cards.CardClasses;
 
 import java.awt.image.BufferedImage;
+
+import Cards.Card;
+import Entity.*;
 
 public class Attack extends Card
 {
@@ -10,9 +13,8 @@ public class Attack extends Card
     }
 
     @Override
-    public void cardAction()
+    public void cardAction(Entity player, Entity enemy)
     {
-        // Implement the specific action for the attack card here
-        System.out.println("Attack card used: " + name + " with value " + value);
+        enemy.damage(value);
     }
 }

@@ -1,20 +1,23 @@
-package Cards;
+package main;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class CardArt
+public class ArtLoader
 {
-    public static BufferedImage shield;
+    public static BufferedImage cardArt;
+    public static BufferedImage endTurnArt;
 
     public static void load()
     {
 
         try
         {
-            shield = ImageIO.read(new File("cardAssets/card2.png"));
+            cardArt = ImageIO.read(new File("cardAssets/card2.png"));
+
+            endTurnArt = ImageIO.read(new File("UIAssets/endturn.png"));
 
         }catch (IOException e)
         {

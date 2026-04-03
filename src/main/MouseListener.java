@@ -1,7 +1,6 @@
 package main;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-//import java.awt.event.MouseMotionAdapter;
 
 public class MouseListener extends MouseAdapter
 {
@@ -14,12 +13,22 @@ public class MouseListener extends MouseAdapter
     }
 
     @Override
-    public void mousePressed(MouseEvent e)
+    public void mouseReleased(MouseEvent e)
+    {
+        //mouseX = e.getX();
+        //mouseY = e.getY();
+
+        gp.LevelH.CH.checkCardClick(mouseX, mouseY);
+        gp.LevelH.turnH.checkEndTurn(mouseX,mouseY);
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e)
     {
         mouseX = e.getX();
         mouseY = e.getY();
 
-        gp.LevelH.CH.checkCardClick(mouseX, mouseY);
+        gp.LevelH.CH.checkCardHover(mouseX,mouseY);
     }
 
 }
