@@ -3,12 +3,16 @@ package Entity;
 public class Entity
 {
     public int health;
+    public int maxHealth;
     public int block;
+    public HealthBar healthBar;
 
     public Entity(int MaxHealth, int initialBlock)
     {
         health = MaxHealth;
+        this.maxHealth = MaxHealth; //stores max health for later
         block = initialBlock;
+        healthBar = new HealthBar(this);
     }
 
     public void damage(int incoming)

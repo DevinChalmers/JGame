@@ -16,9 +16,6 @@ public class TurnHandler
     Rectangle buttonBox;
 
 
-
-
-
     public TurnHandler()
     {
         buttonX = (float) (GamePanel.screenWidth - (GamePanel.screenWidth / 5.9));

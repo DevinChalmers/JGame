@@ -50,9 +50,9 @@ public class CardHandler
         }
     }
 
-    public void buildDeck()
+    public void buildDeck(int cardAmount)
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < cardAmount; i++)
         {
             hand.add(CK.randomCard());
         }
