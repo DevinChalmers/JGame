@@ -15,12 +15,13 @@ public class MouseListener extends MouseAdapter
     @Override
     public void mouseReleased(MouseEvent e)
     {
-        //mouseX = e.getX();
-        //mouseY = e.getY();
+        mouseX = e.getX();
+        mouseY = e.getY();
 
         gp.LevelH.CH.checkCardClick(mouseX, mouseY);
         gp.LevelH.turnH.checkEndTurn(mouseX,mouseY);
     }
+
 
     @Override
     public void mouseMoved(MouseEvent e)

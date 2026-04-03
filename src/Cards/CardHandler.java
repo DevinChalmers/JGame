@@ -1,14 +1,17 @@
 package Cards;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+
 import Entity.*;
 
 import main.GamePanel;
+import main.LevelHandler;
 import main.TurnHandler;
 
 public class CardHandler
 {
-    ArrayList<Card> hand = new ArrayList<>();
+    public ArrayList<Card> hand = new ArrayList<>();
     ArrayList<Rectangle> cardBounds = new ArrayList<>(); //this handles card interaction with mouse
     CardInitializer CK = new CardInitializer(); //initializes Cards
 
@@ -20,11 +23,11 @@ public class CardHandler
     double hoverAmount = 11 * GamePanel.scaleWindow; //in pixels
     boolean debugBoundBox;
 
-    public CardHandler(Entity player, Entity enemy, TurnHandler turnH)
+    public CardHandler(Entity player, Entity enemy, LevelHandler LH)
     {
         this.player = player;
         this.enemy = enemy;
-        this.turnH = turnH;
+        this.turnH = LH.turnH;
     }
     public int calculateCardX(int i)
     {

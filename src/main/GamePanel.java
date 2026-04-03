@@ -6,9 +6,6 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.io.IOException;
 
-import main.*;
-
-
 public class GamePanel extends JPanel implements Runnable
 {
     public static final int scaleWindow = 3; //USE THIS TO SCALE WINDOW (RECOMMENDED = 3)

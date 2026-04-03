@@ -71,7 +71,7 @@ public class HealthBar
             if (!topLeft)
             {
                 //draw shield icon
-                int blockX = (int) (GamePanel.screenWidth - (int)(widthOfBar) - iconWH*1.45);
+                int blockX = (int) (GamePanel.screenWidth - (int)(widthOfBar) - iconWH/6 + shiftRight);
                 int blockY = y + fm.getAscent()/2 - iconWH/3;
                 g2.drawImage(ArtLoader.shieldArt, blockX, blockY, iconWH, iconWH, null);
                 //TextRenderer.renderText(g2, shieldString, font, Color.white, (int)(blockX + fm.stringWidth(shieldString)/2), blockY + fm.getAscent() + 10);
@@ -80,7 +80,7 @@ public class HealthBar
             if (topLeft)
             {
                 //draw shield icon
-                int blockX = GamePanel.screenWidth - (int) (GamePanel.screenWidth - iconWH * 1.45 + iconWH);
+                int blockX = GamePanel.screenWidth - (int) (GamePanel.screenWidth - iconWH + shiftRight/6);
                 int blockY = y + fm.getAscent()/2 - iconWH/3;
                 g2.drawImage(ArtLoader.shieldArt, blockX, blockY, iconWH, iconWH, null);
                 TextRenderer.renderText(g2, shieldString, font, Color.white, (int)(blockX + (iconWH - fm.stringWidth(shieldString))/2), blockY + (iconWH + fm.getAscent())/2 - 5);
