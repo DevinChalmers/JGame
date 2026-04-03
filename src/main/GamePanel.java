@@ -4,6 +4,7 @@ package main;
 
 import javax.swing.JPanel;
 import java.awt.*;
+import main.*;
 
 
 public class GamePanel extends JPanel implements Runnable
@@ -26,7 +27,7 @@ public class GamePanel extends JPanel implements Runnable
 
     Thread gameThread;
 
-    public GamePanel ()
+    public GamePanel()
     {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
