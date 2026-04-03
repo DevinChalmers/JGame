@@ -17,7 +17,7 @@ public class CardHandler
     Entity enemy;
 
     int hoveredCard = -1;
-    int hoverAmount = 30; //in pixels
+    double hoverAmount = 11 * GamePanel.scaleWindow; //in pixels
     boolean debugBoundBox;
 
     public CardHandler(Entity player, Entity enemy, TurnHandler turnH)
@@ -26,7 +26,23 @@ public class CardHandler
         this.enemy = enemy;
         this.turnH = turnH;
     }
+    public int calculateCardX(int i)
+    {
+        return (GamePanel.screenWidth - (hand.size() * hand.get(i).cardW)) / 2 + (i * hand.get(i).cardW);
+    }
 
+
+    public int calculateCardY(int i)
+    {
+        if (i == hoveredCard)
+        {
+            return (int) (GamePanel.screenHeight - GamePanel.screenHeight / (hand.get(i).defaultY) - hoverAmount);
+        }
+        else
+        {
+            return (int) (GamePanel.screenHeight - GamePanel.screenHeight / (hand.get(i).defaultY));
+        }
+    }
 
     public void handleCardBounds(Graphics2D g2)
     {
@@ -70,23 +86,7 @@ public class CardHandler
         }
     }
 
-    public int calculateCardX(int i)
-    {
-        return (GamePanel.screenWidth - (hand.size() * hand.get(i).cardW)) / 2 + (i * hand.get(i).cardW);
-    }
 
-
-    public int calculateCardY(int i)
-    {
-        if (i == hoveredCard)
-        {
-            return GamePanel.screenHeight - GamePanel.screenHeight / (hand.get(i).y) - hoverAmount;
-        }
-        else
-        {
-            return GamePanel.screenHeight - GamePanel.screenHeight / hand.get(i).y;
-        }
-    }
 
 
 

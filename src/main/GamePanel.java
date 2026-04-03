@@ -4,12 +4,14 @@ package main;
 
 import javax.swing.JPanel;
 import java.awt.*;
+import java.io.IOException;
+
 import main.*;
 
 
 public class GamePanel extends JPanel implements Runnable
 {
-    public static final int scaleWindow = 3; //USE THIS TO SCALE WINDOW
+    public static final int scaleWindow = 3; //USE THIS TO SCALE WINDOW (RECOMMENDED = 3)
     public static final int shrinkCards = 30;   //by pixel
 
     //static final int originalTileSize = 76;
@@ -27,8 +29,7 @@ public class GamePanel extends JPanel implements Runnable
 
     Thread gameThread;
 
-    public GamePanel()
-    {
+    public GamePanel() throws IOException, FontFormatException {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);

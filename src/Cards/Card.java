@@ -8,10 +8,8 @@ import Entity.*;
 
 public class Card
 {
-    int defaultY = 4;
-    public int x = 0 , y = defaultY; //y works by how close to the bottom
-
-    //public int speed;
+    double defaultY = 3.65;
+    public double x = 0 , y = defaultY; //y works by how close to the bottom
 
     public BufferedImage sprite;
     public String name;
@@ -23,8 +21,8 @@ public class Card
     public int cardWbyPixels = 73;
     public int cardHbyPixels = 103;
 
-    public int cardW = (cardWbyPixels * GamePanel.scaleWindow) - GamePanel.shrinkCards;
-    public int cardH = (cardHbyPixels * GamePanel.scaleWindow) - GamePanel.shrinkCards;
+    public int cardW = (cardWbyPixels * GamePanel.scaleWindow - GamePanel.shrinkCards);
+    public int cardH = (cardHbyPixels * GamePanel.scaleWindow - GamePanel.shrinkCards);
 
     public Card(String name, String type, int value, BufferedImage sprite)
     {
@@ -36,8 +34,6 @@ public class Card
 
     public void drawToScreen(Graphics2D g2, Card card, int x, int y)
     {
-
-        int drawY = y; //add hover
 
         if (card.sprite != null)
         {
