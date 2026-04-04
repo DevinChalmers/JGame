@@ -66,7 +66,7 @@ public class TurnHandler
         playerTurn = true;
         LH.currentLevel.CH.energy = LH.currentLevel.energyReplenishAmount;
         LH.currentLevel.CH.hand.clear();
-        LH.currentLevel.CH.buildDeck(6);
+        LH.currentLevel.CH.buildDeck(4);
     }
 
 

@@ -12,10 +12,8 @@ public class CardInitializer
     
     public CardInitializer(CardHandler CH)
     {
-        allCards.add(new Block("Block", "Defend", 1, ArtLoader.cardArt, CH));
-        allCards.add(new Attack("Strike", "Attack", 1, ArtLoader.cardArt, CH));
-        allCards.add(new Attack("Heal", "Heal", 1, ArtLoader.cardArt, CH));
-        allCards.add(new Attack("Card", "Attack", 1, ArtLoader.cardArt,CH));
+        allCards.add(new Block("Parry", "Defend", 1, ArtLoader.parryArt, CH));
+        allCards.add(new JavaAttack("Java", "Attack", 1, ArtLoader.javaArt, CH));
     }
 
     public Card randomCard()

@@ -11,6 +11,8 @@ public class ArtLoader
     public static BufferedImage cardArt;
     public static BufferedImage endTurnArt;
     public static BufferedImage shieldArt;
+    public static BufferedImage parryArt;
+    public static BufferedImage javaArt;
 
     public static Font perfectFont;
     public static Font smallPerfectFont;
@@ -22,6 +24,11 @@ public class ArtLoader
         try
         {
             cardArt = ImageIO.read(new File("cardAssets/card2.png"));
+            parryArt = ImageIO.read(new File("cardAssets/parry.png"));
+            javaArt = ImageIO.read(new File("cardAssets/java.png"));
+
+
+
             endTurnArt = ImageIO.read(new File("UIAssets/endturn.png"));
             shieldArt = ImageIO.read(new File("UIAssets/shield.png"));
 

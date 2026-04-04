@@ -1,6 +1,6 @@
 package Entity;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 public class OpponentAI
 {
@@ -28,7 +28,8 @@ public class OpponentAI
 
     public int getRandomNumber(int min, int max)
     {
-        return (int) (ThreadLocalRandom.current().nextInt(min, max + 1));
+        Random rand = new Random();
+        return rand.nextInt((max - min) + 1) + min;
     }
 
     public void opponentAction()

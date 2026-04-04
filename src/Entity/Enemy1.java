@@ -1,5 +1,7 @@
 package Entity;
 
+import java.util.Random;
+
 public class Enemy1 extends OpponentAI
 {
     String[] moves = {"Attack", "Block", "Heal"};
@@ -18,13 +20,22 @@ public class Enemy1 extends OpponentAI
     @Override
     public void damagePlayer(int incoming)
     {
-        player.damage(getRandomNumber(0,40));
+        player.damage(incoming);
     }
 
+    int damageAmount = 30;
     @Override
     public void decision()
     {
-        System.out.println("Opponent will "+ moves[index]);
+        damageAmount = getRandomNumber(10, damageAmount);
+        if (moves[index] == "Attack")
+        {
+            System.out.println("Opponent will " + moves[index] + " for " + damageAmount);
+        }
+        else
+        {
+            System.out.println("Opponent will " + moves[index]);
+        }
     }
 
     @Override
@@ -32,12 +43,13 @@ public class Enemy1 extends OpponentAI
     {
         if(moves[index] == "Attack")
         {
-            damagePlayer(getRandomNumber(0,40));
+            System.out.println(damageAmount);
+            damagePlayer(damageAmount);
         }
         
         else if(moves[index] == "Block")
         {
-            self.addBlock(getRandomNumber(0,20));
+
         }
 
         else if(moves[index] == "Heal")
@@ -61,5 +73,12 @@ public class Enemy1 extends OpponentAI
         {
             index = 0;
         }
+    }
+
+    @Override
+    public int getRandomNumber(int min, int max)
+    {
+        Random rand = new Random();
+        return rand.nextInt((max - min) + 1) + min;
     }
 }

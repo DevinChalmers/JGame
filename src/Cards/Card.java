@@ -23,6 +23,8 @@ public class Card
     public int cardWbyPixels = 73;
     public int cardHbyPixels = 103;
 
+    //73x103
+
     public int cardW = (cardWbyPixels * GamePanel.scaleWindow - GamePanel.shrinkCards);
     public int cardH = (cardHbyPixels * GamePanel.scaleWindow - GamePanel.shrinkCards);
 
