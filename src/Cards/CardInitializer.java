@@ -10,12 +10,12 @@ public class CardInitializer
 {
     ArrayList<Card> allCards = new ArrayList<>();
     
-    public CardInitializer()
+    public CardInitializer(CardHandler CH)
     {
-        allCards.add(new Attack("Block", "Defend", 20, ArtLoader.cardArt));
-        allCards.add(new Attack("Strike", "Attack", 20, ArtLoader.cardArt));
-        allCards.add(new Attack("Heal", "Heal", 20, ArtLoader.cardArt));
-        allCards.add(new Attack("Card", "Attack", 20, ArtLoader.cardArt));
+        allCards.add(new Attack("Block", "Defend", 1, ArtLoader.cardArt, CH));
+        allCards.add(new Attack("Strike", "Attack", 1, ArtLoader.cardArt, CH));
+        allCards.add(new Attack("Heal", "Heal", 1, ArtLoader.cardArt, CH));
+        allCards.add(new Attack("Card", "Attack", 1, ArtLoader.cardArt,CH));
     }
 
     public Card randomCard()

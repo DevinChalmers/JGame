@@ -2,6 +2,8 @@ package main;
 
 //import Cards.Card;
 
+import Level.LevelHandler;
+
 import javax.swing.JPanel;
 import java.awt.*;
 import java.io.IOException;
@@ -79,7 +81,7 @@ public class GamePanel extends JPanel implements Runnable
 
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR); //makes pixel art correct
 
-        LevelH.updateLevel(g2);
+        LevelH.renderLevel(g2);
 
         g2.dispose();
     }

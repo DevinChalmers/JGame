@@ -7,12 +7,15 @@ public class Entity
     public int block;
     public HealthBar healthBar;
 
-    public Entity(int MaxHealth, int initialBlock)
+    //public String name;
+
+    public Entity(int MaxHealth, int initialBlock, String name)
     {
         health = MaxHealth;
         this.maxHealth = MaxHealth; //stores max health for later
         block = initialBlock;
-        healthBar = new HealthBar(this);
+
+        healthBar = new HealthBar(this, name);
     }
 
     public void damage(int incoming)
@@ -40,8 +43,9 @@ public class Entity
         System.out.println("HEALTH: " + health + " SHIELD: " + block);
     }
 
-    public void setBlock(int block)
+    public void setBlock(int blockAmount)
     {
-        block = block;
+        block = blockAmount;
+        System.out.println(blockAmount);
     }
 }

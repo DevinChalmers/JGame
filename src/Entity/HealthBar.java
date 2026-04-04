@@ -9,14 +9,17 @@ import java.awt.*;
 public class HealthBar
 {
     Entity entity;
+    public String name;
 
-    public HealthBar(Entity entity)
+    public HealthBar(Entity entity, String name)
     {
         this.entity = entity;
+        this.name = name;
     }
 
-    public void renderHealthBar(int maxHealth, int health, int block, Graphics2D g2, boolean topLeft, int shiftRight, int shiftDown, Font font)
+    public void renderHealthBar( int maxHealth, int health, int block, Graphics2D g2, boolean topLeft, int shiftRight, int shiftDown, Font font)
     {
+        FontMetrics fm = g2.getFontMetrics(font);
         int x = 0;
         int y = 0;
         double percentHealth = ((double)health / (double)maxHealth);
@@ -33,11 +36,17 @@ public class HealthBar
         {
             x = GamePanel.screenWidth - (2 * (GamePanel.screenWidth / 2)) + shiftRight;
             y = GamePanel.screenHeight - (2 * (GamePanel.screenHeight / 2)) + shiftDown;
+
+            //Render name
+            TextRenderer.renderText(g2, name, ArtLoader.perfectFont, Color.white, x, y - 4);
         }
         else
         {
             x = GamePanel.screenWidth - (int) (widthOfBar) + shiftRight;
             y = GamePanel.screenHeight - (2 * (GamePanel.screenHeight / 2)) + shiftDown;
+
+            //Render name
+            TextRenderer.renderText(g2, name, ArtLoader.perfectFont, Color.white, (int) (x + widthOfBar) - fm.stringWidth(name), y - 4);
         }
 
         //render max health bar
@@ -55,7 +64,6 @@ public class HealthBar
         String healthString = String.valueOf(health + "/" + maxHealth);
         String shieldString = String.valueOf(block);
 
-        FontMetrics fm = g2.getFontMetrics(font);
         int yCorrection = -2; //in pixels
 
 
@@ -71,7 +79,7 @@ public class HealthBar
             if (!topLeft)
             {
                 //draw shield icon
-                int blockX = (int) (GamePanel.screenWidth - (int)(widthOfBar) - iconWH/6 + shiftRight);
+                int blockX = (int) (GamePanel.screenWidth - (int)(widthOfBar) - iconWH/2 + shiftRight);
                 int blockY = y + fm.getAscent()/2 - iconWH/3;
                 g2.drawImage(ArtLoader.shieldArt, blockX, blockY, iconWH, iconWH, null);
                 //TextRenderer.renderText(g2, shieldString, font, Color.white, (int)(blockX + fm.stringWidth(shieldString)/2), blockY + fm.getAscent() + 10);

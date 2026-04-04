@@ -1,6 +1,6 @@
 package main;
 
-import Cards.CardHandler;
+import Level.LevelHandler;
 
 import java.awt.*;
 
@@ -25,7 +25,6 @@ public class TurnHandler
         buttonX = (float) (GamePanel.screenWidth - (GamePanel.screenWidth / 5.9));
         buttonY = (float) ((GamePanel.screenHeight) - (GamePanel.screenHeight / 2.35));
         buttonBox = new Rectangle((int) buttonX, (int) buttonY, buttonW, buttonH);
-
     }
     public void endTurn()
     {
@@ -53,16 +52,22 @@ public class TurnHandler
 
     public void startEnemyTurn()
     {
-        LH.basicAI.opponentAction();
+        LH.currentLevel.enemy.setBlock(0);
+        LH.currentLevel.enemyAI.opponentAction();
+
         endEnemyTurn();
     }
 
     public void endEnemyTurn()
     {
-        LH.basicAI.decision();
+
+        LH.currentLevel.enemyAI.decision();
+        LH.currentLevel.player.setBlock(0);
         playerTurn = true;
-        LH.CH.hand.clear();
-        LH.CH.buildDeck(6);
+        LH.currentLevel.CH.energy = LH.currentLevel.energyReplenishAmount;
+        LH.currentLevel.CH.hand.clear();
+        LH.currentLevel.CH.buildDeck(6);
+
     }
 
 

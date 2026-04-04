@@ -2,7 +2,7 @@ package Entity;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class OpponentAI
+public class Enemy1 extends OpponentAI
 {
     String[] moves = {"Attack", "Block", "Heal"};
     int index = 0;
@@ -10,34 +10,33 @@ public class OpponentAI
     Entity player;
     Entity self;
 
-    public OpponentAI(Entity player, Entity self)
+    public Enemy1(Entity player, Entity self)
     {
+        super(player, self);
         this.player = player;
         this.self = self;
     }
 
+    @Override
     public void damagePlayer(int incoming)
     {
         player.damage(getRandomNumber(0,40));
     }
 
+    @Override
     public void decision()
     {
         System.out.println("Opponent will "+ moves[index]);
     }
 
-    public int getRandomNumber(int min, int max)
-    {
-        return (int) (ThreadLocalRandom.current().nextInt(min, max + 1));
-    }
-
+    @Override
     public void opponentAction()
     {
         if(moves[index] == "Attack")
         {
             damagePlayer(getRandomNumber(0,40));
         }
-
+        
         else if(moves[index] == "Block")
         {
             self.setBlock(getRandomNumber(0,20));

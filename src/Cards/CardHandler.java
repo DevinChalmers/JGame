@@ -1,19 +1,20 @@
 package Cards;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
 
 import Entity.*;
 
 import main.GamePanel;
-import main.LevelHandler;
+import Level.LevelHandler;
 import main.TurnHandler;
 
 public class CardHandler
 {
     public ArrayList<Card> hand = new ArrayList<>();
     ArrayList<Rectangle> cardBounds = new ArrayList<>(); //this handles card interaction with mouse
-    CardInitializer CK = new CardInitializer(); //initializes Cards
+    CardInitializer CI = new CardInitializer(this); //initializes Cards
+
+    public int energy = 3;
 
     TurnHandler turnH;
     Entity player;
@@ -73,7 +74,7 @@ public class CardHandler
     {
         for (int i = 0; i < cardAmount; i++)
         {
-            hand.add(CK.randomCard());
+            hand.add(CI.randomCard());
         }
     }
 
@@ -105,8 +106,15 @@ public class CardHandler
                 {
                     if (turnH.playerTurn)
                     {
-                        hand.get(i).cardAction(player, enemy); //passed all information needed for card Action
-                        hand.remove(i); //removes card from hand after click
+                        if (energy > 0)
+                        {
+                            hand.get(i).cardAction(player, enemy); //passed all information needed for card Action
+                            hand.remove(i); //removes card from hand after click
+                        }
+                        else
+                        {
+                            System.out.println("Out of Energy");
+                        }
                     }
                     else
                     {

@@ -18,7 +18,7 @@ public class MouseListener extends MouseAdapter
         mouseX = e.getX();
         mouseY = e.getY();
 
-        gp.LevelH.CH.checkCardClick(mouseX, mouseY);
+        gp.LevelH.currentLevel.CH.checkCardClick(mouseX, mouseY);
         gp.LevelH.turnH.checkEndTurn(mouseX,mouseY);
     }
 
@@ -29,7 +29,7 @@ public class MouseListener extends MouseAdapter
         mouseX = e.getX();
         mouseY = e.getY();
 
-        gp.LevelH.CH.checkCardHover(mouseX,mouseY);
+        gp.LevelH.currentLevel.CH.checkCardHover(mouseX,mouseY);
     }
 
 }

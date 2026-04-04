@@ -15,6 +15,8 @@ public class Card
     public String name;
     public String type;
     public int value;
+    public CardHandler CH;
+    public int energyCost;
 
     public boolean Hovered = false;
 
@@ -24,12 +26,13 @@ public class Card
     public int cardW = (cardWbyPixels * GamePanel.scaleWindow - GamePanel.shrinkCards);
     public int cardH = (cardHbyPixels * GamePanel.scaleWindow - GamePanel.shrinkCards);
 
-    public Card(String name, String type, int value, BufferedImage sprite)
+    public Card(String name, String type, int energyCost, BufferedImage sprite, CardHandler CH)
     {
         this.name = name;
         this.type = type;
-        this.value= value;
+        this.energyCost = energyCost;
         this.sprite = sprite;
+        this.CH = CH;
     }
 
     public void drawToScreen(Graphics2D g2, Card card, int x, int y)
