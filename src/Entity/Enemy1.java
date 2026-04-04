@@ -1,7 +1,5 @@
 package Entity;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Enemy1 extends OpponentAI
 {
     String[] moves = {"Attack", "Block", "Heal"};
@@ -39,7 +37,7 @@ public class Enemy1 extends OpponentAI
         
         else if(moves[index] == "Block")
         {
-            self.setBlock(getRandomNumber(0,20));
+            self.addBlock(getRandomNumber(0,20));
         }
 
         else if(moves[index] == "Heal")

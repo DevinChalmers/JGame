@@ -58,7 +58,7 @@ public class HealthBar
         g2.fillRect(x, y, (int)(percentHealth * widthOfBar), heightOfBar );
 
         //render shield bar
-        g2.setColor(Color.cyan);
+        g2.setColor(new Color(114, 158, 255));
         g2.fillRect(x, y, blockWidth, heightOfBar);
 
         String healthString = String.valueOf(health + "/" + maxHealth);

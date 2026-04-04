@@ -1,14 +1,15 @@
 package Cards.CardClasses;
 
+import Cards.Card;
+import Cards.CardHandler;
+import Entity.Entity;
+
 import java.awt.image.BufferedImage;
 
-import Cards.*;
-import Entity.*;
-
-public class Attack extends Card
+public class Block extends Card
 {
 
-    public Attack(String name, String type, int energyCost, BufferedImage sprite, CardHandler CH)
+    public Block(String name, String type, int energyCost, BufferedImage sprite, CardHandler CH)
     {
         super(name, type, energyCost, sprite, CH);
     }
@@ -18,6 +19,6 @@ public class Attack extends Card
     {
         System.out.println(CH.energy + " energy remaining");
         CH.energy -= energyCost;
-        enemy.damage(20);
+        player.addBlock(20);
     }
 }

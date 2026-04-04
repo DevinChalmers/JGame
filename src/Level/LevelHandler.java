@@ -27,7 +27,7 @@ public class LevelHandler
         turnH = new TurnHandler(this);
         Level1 = new Level1(this, turnH);
         Level2 = new Level2(this, turnH);
-        currentLevel = Level2;
+        currentLevel = Level1;
         currentLevel.init();
 
 

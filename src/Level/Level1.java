@@ -30,7 +30,6 @@ public class Level1 extends BaseLevel
             turnH.renderTurnButton(g2);
             enemy.healthBar.renderHealthBar(enemy.maxHealth, enemy.health, enemy.block, g2, false, -30, 13, ArtLoader.smallPerfectFont);
             player.healthBar.renderHealthBar(player.maxHealth, player.health, player.block, g2, true, 30, 13, ArtLoader.smallPerfectFont);
-            TextRenderer.renderText(g2, "Player", ArtLoader.perfectFont, Color.white, 200, 200);
         }
     }
 

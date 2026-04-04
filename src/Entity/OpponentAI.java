@@ -40,7 +40,7 @@ public class OpponentAI
 
         else if(moves[index] == "Block")
         {
-            self.setBlock(getRandomNumber(0,20));
+            self.addBlock(getRandomNumber(0,20));
         }
 
         else if(moves[index] == "Heal")

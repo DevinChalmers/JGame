@@ -37,7 +37,7 @@ public class Enemy2 extends OpponentAI
         
         else if(moves[index] == "Block")
         {
-            self.setBlock(getRandomNumber(0,20));
+            self.addBlock(getRandomNumber(0,20));
         }
 
         else if(moves[index] == "Heal")

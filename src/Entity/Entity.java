@@ -43,9 +43,13 @@ public class Entity
         System.out.println("HEALTH: " + health + " SHIELD: " + block);
     }
 
+    public void addBlock(int blockAmount)
+    {
+        block += blockAmount;
+    }
+
     public void setBlock(int blockAmount)
     {
         block = blockAmount;
-        System.out.println(blockAmount);
     }
 }
