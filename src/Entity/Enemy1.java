@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Enemy1 extends OpponentAI
 {
-    String[] moves = {"Attack", "Block", "Heal"};
+    String[] moves = {"Block", "Attack", "Attack", "Attack", "Block", "Heal"};
     int index = 0;
 
     Entity player;
@@ -49,7 +49,7 @@ public class Enemy1 extends OpponentAI
         
         else if(moves[index] == "Block")
         {
-
+            self.addBlock(getRandomNumber(0,20));
         }
 
         else if(moves[index] == "Heal")

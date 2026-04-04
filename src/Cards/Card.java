@@ -8,7 +8,7 @@ import Entity.*;
 
 public class Card
 {
-    double defaultY = 3.65;
+    double defaultY = 4.25;
     public double x = 0 , y = defaultY; //y works by how close to the bottom
 
     public BufferedImage sprite;

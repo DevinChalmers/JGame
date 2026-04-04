@@ -21,7 +21,7 @@ public class CardHandler
     Entity enemy;
 
     int hoveredCard = -1;
-    double hoverAmount = 11 * GamePanel.scaleWindow; //in pixels
+    double hoverAmount = 22 * GamePanel.scaleWindow; //in pixels
     boolean debugBoundBox;
 
     public CardHandler(Entity player, Entity enemy, LevelHandler LH)
@@ -106,14 +106,14 @@ public class CardHandler
                 {
                     if (turnH.playerTurn)
                     {
-                        if (energy > 0)
+                        if (hand.get(i).energyCost <= energy)
                         {
                             hand.get(i).cardAction(player, enemy); //passed all information needed for card Action
                             hand.remove(i); //removes card from hand after click
                         }
                         else
                         {
-                            System.out.println("Out of Energy");
+                            System.out.println("Not enough energy!");
                         }
                     }
                     else

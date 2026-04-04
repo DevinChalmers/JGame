@@ -6,10 +6,10 @@ import Entity.Entity;
 
 import java.awt.image.BufferedImage;
 
-public class JavaAttack extends Card
+public class Infinite extends Card
 {
 
-    public JavaAttack(String name, String type, int energyCost, BufferedImage sprite, CardHandler CH)
+    public Infinite(String name, String type, int energyCost, BufferedImage sprite, CardHandler CH)
     {
         super(name, type, energyCost, sprite, CH);
     }
@@ -19,6 +19,6 @@ public class JavaAttack extends Card
     {
         System.out.println(CH.energy + " energy remaining");
         CH.energy -= energyCost;
-        enemy.damage(10);
+        enemy.damage(21);
     }
 }

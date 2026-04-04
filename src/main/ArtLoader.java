@@ -13,6 +13,7 @@ public class ArtLoader
     public static BufferedImage shieldArt;
     public static BufferedImage parryArt;
     public static BufferedImage javaArt;
+    public static BufferedImage infiniteArt;
 
     public static Font perfectFont;
     public static Font smallPerfectFont;
@@ -26,6 +27,7 @@ public class ArtLoader
             cardArt = ImageIO.read(new File("cardAssets/card2.png"));
             parryArt = ImageIO.read(new File("cardAssets/parry.png"));
             javaArt = ImageIO.read(new File("cardAssets/java.png"));
+            infiniteArt = ImageIO.read(new File("cardAssets/infinite.png"));
 
 
 

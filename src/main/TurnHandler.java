@@ -12,7 +12,7 @@ public class TurnHandler
     float buttonX;
     float buttonY;
     int widthInPixels = 73;
-    int heightInPixels= 25;
+    int heightInPixels= 26;
     int buttonW = widthInPixels * GamePanel.scaleWindow;
     int buttonH = heightInPixels * GamePanel.scaleWindow;
     Rectangle buttonBox;
@@ -66,7 +66,7 @@ public class TurnHandler
         playerTurn = true;
         LH.currentLevel.CH.energy = LH.currentLevel.energyReplenishAmount;
         LH.currentLevel.CH.hand.clear();
-        LH.currentLevel.CH.buildDeck(4);
+        LH.currentLevel.CH.buildDeck(6);
     }
 
 
