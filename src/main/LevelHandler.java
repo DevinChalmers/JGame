@@ -4,7 +4,7 @@ import java.awt.*;
 
 import Cards.CardHandler;
 import Cards.CardInitializer;
-import Entity.Entity;
+import Entity.*;
 
 public class LevelHandler
 {
@@ -13,6 +13,9 @@ public class LevelHandler
     CardHandler CH;
     CardInitializer CK = new CardInitializer();
     public TurnHandler turnH;
+    public OpponentAI basicAI;
+
+    int level = 1;
 
 
     public LevelHandler()
@@ -20,9 +23,11 @@ public class LevelHandler
         player = new Entity(50, 2);
         enemy = new Entity(200, 50);
         turnH = new TurnHandler(this);
+        basicAI = new OpponentAI(player, enemy);
+
         CH = new CardHandler(player, enemy, this);
 
-        CH.buildDeck(6);
+        turnH.endEnemyTurn();
     }
 
     public void updateLevel(Graphics2D g2)

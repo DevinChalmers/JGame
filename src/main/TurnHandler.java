@@ -53,6 +53,13 @@ public class TurnHandler
 
     public void startEnemyTurn()
     {
+        LH.basicAI.opponentAction();
+        endEnemyTurn();
+    }
+
+    public void endEnemyTurn()
+    {
+        LH.basicAI.decision();
         playerTurn = true;
         LH.CH.hand.clear();
         LH.CH.buildDeck(6);
