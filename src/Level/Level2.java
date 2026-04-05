@@ -12,7 +12,7 @@ public class Level2 extends BaseLevel
 {
     public Level2(LevelHandler LevelH, TurnHandler turnH)
     {
-        super(LevelH, turnH);
+        super(LevelH, turnH, 100);
         energyReplenishAmount = 3;
         this.LevelH = LevelH;
         this.turnH = turnH;
@@ -32,11 +32,11 @@ public class Level2 extends BaseLevel
     }
 
     @Override
-    public void init()
+    public void init(int playerStartingHealth)
     {
-        player = new Entity(100, 10, "Player");
-        enemy = new Entity(500, 50, "Enemy 2");
-        enemyAI = new Enemy2(player, enemy);
+        player = new Entity(playerStartingHealth, 100, 0, "Player");
+        enemy = new Entity(500, 500, 50, "C-Plus-Plus");
+        enemyAI = new Enemy2(player, enemy, LevelH);
 
         CH = new CardHandler(player, enemy, LevelH);
 

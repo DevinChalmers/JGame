@@ -14,6 +14,8 @@ public class ArtLoader
     public static BufferedImage parryArt;
     public static BufferedImage javaArt;
     public static BufferedImage infiniteArt;
+    public static BufferedImage firewallArt;
+    public static BufferedImage memoryArt;
 
     public static Font perfectFont;
     public static Font smallPerfectFont;
@@ -28,6 +30,8 @@ public class ArtLoader
             parryArt = ImageIO.read(new File("cardAssets/parry.png"));
             javaArt = ImageIO.read(new File("cardAssets/java.png"));
             infiniteArt = ImageIO.read(new File("cardAssets/infinite.png"));
+            firewallArt = ImageIO.read(new File("cardAssets/firewall.png"));
+            memoryArt = ImageIO.read(new File("cardAssets/memory.png"));
 
 
 

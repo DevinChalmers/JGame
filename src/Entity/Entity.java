@@ -9,9 +9,9 @@ public class Entity
 
     //public String name;
 
-    public Entity(int MaxHealth, int initialBlock, String name)
+    public Entity(int initialHealth, int MaxHealth, int initialBlock, String name)
     {
-        health = MaxHealth;
+        health = initialHealth;
         this.maxHealth = MaxHealth; //stores max health for later
         block = initialBlock;
 

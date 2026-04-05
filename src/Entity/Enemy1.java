@@ -1,5 +1,9 @@
 package Entity;
 
+import Level.LevelHandler;
+import main.TextRenderer;
+
+import java.awt.*;
 import java.util.Random;
 
 public class Enemy1 extends OpponentAI
@@ -10,11 +14,12 @@ public class Enemy1 extends OpponentAI
     Entity player;
     Entity self;
 
-    public Enemy1(Entity player, Entity self)
+    public Enemy1(Entity player, Entity self, LevelHandler LH)
     {
-        super(player, self);
+        super(player, self, LH);
         this.player = player;
         this.self = self;
+        this.LH = LH;
     }
 
     @Override
@@ -36,6 +41,8 @@ public class Enemy1 extends OpponentAI
         {
             System.out.println("Opponent will " + moves[index]);
         }
+
+
     }
 
     @Override
