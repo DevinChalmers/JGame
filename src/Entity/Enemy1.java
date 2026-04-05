@@ -1,25 +1,22 @@
 package Entity;
 
-import Level.LevelHandler;
-import main.TextRenderer;
-
-import java.awt.*;
+import java.util.Objects;
 import java.util.Random;
 
 public class Enemy1 extends OpponentAI
 {
-    String[] moves = {"Block", "Attack", "Attack", "Attack", "Block", "Heal"};
+    String[] moves = {"Block", "Attack", "Attack", "Attack", "Heal", "Block"};
     int index = 0;
 
     Entity player;
     Entity self;
 
-    public Enemy1(Entity player, Entity self, LevelHandler LH)
+    public Enemy1(Entity player, Entity self)
     {
-        super(player, self, LH);
+        super(player, self);
         this.player = player;
         this.self = self;
-        this.LH = LH;
+        decisionString = "Hello2";
     }
 
     @Override
@@ -28,21 +25,21 @@ public class Enemy1 extends OpponentAI
         player.damage(incoming);
     }
 
-    int damageAmount = 30;
+    int maxDamageAmount = 30;
+    int damageAmount;
     @Override
     public void decision()
     {
-        damageAmount = getRandomNumber(10, damageAmount);
-        if (moves[index] == "Attack")
+        damageAmount = getRandomNumber(10, maxDamageAmount);
+        if (Objects.equals(moves[index], "Attack"))
         {
-            System.out.println("Opponent will " + moves[index] + " for " + damageAmount);
+            decisionString = "Opponent will " + moves[index] + " for " + damageAmount;
+            System.out.println(decisionString);
         }
         else
         {
-            System.out.println("Opponent will " + moves[index]);
+            decisionString = "Opponent will " + moves[index];
         }
-
-
     }
 
     @Override

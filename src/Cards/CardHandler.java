@@ -12,7 +12,7 @@ public class CardHandler
 {
     public ArrayList<Card> hand = new ArrayList<>();
     ArrayList<Rectangle> cardBounds = new ArrayList<>(); //this handles card interaction with mouse
-    public CardInitializer CI = new CardInitializer(this); //initializes Cards
+    CardInitializer CI = new CardInitializer(this); //initializes Cards
 
     public int energy = 3;
 
@@ -86,7 +86,7 @@ public class CardHandler
                     g2,
                     hand.get(i),
                     calculateCardX(i),
-                    calculateCardY(i), this); //cards take the last 4th of the screen by default
+                    calculateCardY(i)); //cards take the last 4th of the screen by default
         }
     }
 

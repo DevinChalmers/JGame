@@ -1,6 +1,7 @@
 package Level;
 
 import Cards.CardHandler;
+import Cards.CardInitializer;
 import Entity.*;
 import main.*;
 
@@ -17,10 +18,9 @@ public class BaseLevel
     LevelHandler LevelH;
     TurnHandler turnH;
     public boolean initialized;
-    public int playerStartingHealth = 100;
 
 
-    public BaseLevel(LevelHandler LevelH, TurnHandler turnH, int playerStartingHealth)
+    public BaseLevel(LevelHandler LevelH, TurnHandler turnH)
     {
 
     }
@@ -35,23 +35,8 @@ public class BaseLevel
     }
 
 
-    public void init(int playerStartingHealth)
+    public void init()
     {
 
     }
-
-    public void checkEndGame()
-    {
-        if (player != null && player.health <= 0)
-        {
-            System.exit(0); //closes game
-        }
-        if (player != null && enemy.health <= 0)
-        {
-            LevelH.currentLevel = LevelH.Level2;
-            LevelH.currentLevel.init(player.health);
-        }
-    }
-
-
 }

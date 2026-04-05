@@ -1,7 +1,6 @@
 package Cards;
 
 
-import Cards.*;
 import Cards.CardClasses.*;
 import main.ArtLoader;
 
@@ -16,8 +15,6 @@ public class CardInitializer
         allCards.add(new Parry("Parry", "Defend", 1, ArtLoader.parryArt, CH));
         allCards.add(new JavaAttack("Hot Java", "Attack", 1, ArtLoader.javaArt, CH));
         allCards.add(new Infinite("Infinite Loop", "Attack", 2, ArtLoader.infiniteArt, CH));
-        allCards.add(new Memory("Memory Leak", "Attack", 1, ArtLoader.memoryArt, CH));
-        allCards.add(new Firewall("Firewall", "Attack", 2, ArtLoader.firewallArt, CH));
     }
 
     public Card randomCard()

@@ -1,6 +1,5 @@
 package Level;
 
-import main.ArtLoader;
 import main.TurnHandler;
 
 import java.awt.*;
@@ -29,7 +28,7 @@ public class LevelHandler
         Level1 = new Level1(this, turnH);
         Level2 = new Level2(this, turnH);
         currentLevel = Level1;
-        currentLevel.init(100);
+        currentLevel.init();
 
 
 
@@ -49,8 +48,7 @@ public class LevelHandler
     public void renderLevel(Graphics2D g2)
     {
         currentLevel.updateLevel(g2, turnH);
-        currentLevel.checkEndGame();
-        currentLevel.enemyAI.renderOpponentDecision(g2, ArtLoader.perfectFont);
+        currentLevel.enemyAI.renderDecision(g2);
 
         /*
         CH.renderDeck(g2); //renders the hand always

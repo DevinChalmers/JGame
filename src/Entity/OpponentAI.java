@@ -1,12 +1,11 @@
 package Entity;
 
-import Level.LevelHandler;
-import main.GamePanel;
+import main.ArtLoader;
 import main.TextRenderer;
 
 import java.awt.*;
 import java.util.Random;
-import java.util.logging.Level;
+
 
 public class OpponentAI
 {
@@ -15,20 +14,13 @@ public class OpponentAI
 
     Entity player;
     Entity self;
-    int x;
-    int y;
-    LevelHandler LH;
 
-    String decisionString;
+    public String decisionString = "Hello";
 
-
-    public OpponentAI(Entity player, Entity self, LevelHandler LH)
+    public OpponentAI(Entity player, Entity self)
     {
         this.player = player;
         this.self = self;
-        this.LH = LH;
-        x = GamePanel.screenWidth - (int) (LH.currentLevel.enemy.healthBar.widthOfBar) + 5;
-        y = GamePanel.screenHeight - (2 * (GamePanel.screenHeight / 2)) + 5;
     }
 
     public void damagePlayer(int incoming)
@@ -38,7 +30,7 @@ public class OpponentAI
 
     public void decision()
     {
-        decisionString = "Opponent will " + moves[index];
+        System.out.println("Opponent will "+ moves[index]);
     }
 
     public int getRandomNumber(int min, int max)
@@ -82,9 +74,8 @@ public class OpponentAI
         }
     }
 
-    public void renderOpponentDecision(Graphics2D g2, Font font)
+    public void renderDecision(Graphics2D g2)
     {
-        //render decision
-        TextRenderer.renderText(g2, decisionString, font, Color.white, x, y);
+        TextRenderer.renderText(g2, decisionString, ArtLoader.perfectFont, Color.white, 600, 600);
     }
 }

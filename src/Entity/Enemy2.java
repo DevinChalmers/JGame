@@ -1,6 +1,6 @@
 package Entity;
 
-import Level.LevelHandler;
+import java.util.Objects;
 
 public class Enemy2 extends OpponentAI
 {
@@ -10,12 +10,11 @@ public class Enemy2 extends OpponentAI
     Entity player;
     Entity self;
 
-    public Enemy2(Entity player, Entity self, LevelHandler LH)
+    public Enemy2(Entity player, Entity self)
     {
-        super(player, self, LH);
+        super(player, self);
         this.player = player;
         this.self = self;
-        this.LH = LH;
     }
 
     @Override
@@ -24,33 +23,35 @@ public class Enemy2 extends OpponentAI
         player.damage(getRandomNumber(0,40));
     }
 
-    int damageAmount = 30;
+    int maxDamageAmount = 30;
+    int damageAmount;
     @Override
     public void decision()
     {
-        damageAmount = getRandomNumber(10, damageAmount);
-        if (moves[index] == "Attack")
+        damageAmount = getRandomNumber(10, maxDamageAmount);
+        if (Objects.equals(moves[index], "Attack"))
         {
-            System.out.println("Opponent will " + moves[index] + " for " + damageAmount);
+            decisionString = "Opponent will " + moves[index] + " for " + damageAmount;
+            System.out.println(decisionString);
         }
         else
         {
-            System.out.println("Opponent will " + moves[index]);
+            decisionString = "Opponent will " + moves[index];
         }
     }
+
 
     @Override
     public void opponentAction()
     {
         if(moves[index] == "Attack")
         {
-            System.out.println(damageAmount);
-            damagePlayer(damageAmount);
+            damagePlayer(getRandomNumber(0,40));
         }
         
         else if(moves[index] == "Block")
         {
-            self.addBlock(getRandomNumber(15,45));
+            self.addBlock(getRandomNumber(0,20));
         }
 
         else if(moves[index] == "Heal")
