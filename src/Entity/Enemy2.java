@@ -1,7 +1,5 @@
 package Entity;
 
-import java.util.Objects;
-
 public class Enemy2 extends OpponentAI
 {
     String[] moves = {"Attack", "Attack", "Block", "Attack", "Heal"};
@@ -23,23 +21,11 @@ public class Enemy2 extends OpponentAI
         player.damage(getRandomNumber(0,40));
     }
 
-    int maxDamageAmount = 30;
-    int damageAmount;
     @Override
     public void decision()
     {
-        damageAmount = getRandomNumber(10, maxDamageAmount);
-        if (Objects.equals(moves[index], "Attack"))
-        {
-            decisionString = "Opponent will " + moves[index] + " for " + damageAmount;
-            System.out.println(decisionString);
-        }
-        else
-        {
-            decisionString = "Opponent will " + moves[index];
-        }
+        System.out.println("Opponent will "+ moves[index]);
     }
-
 
     @Override
     public void opponentAction()

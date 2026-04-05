@@ -1,11 +1,10 @@
 package Entity;
 
-import java.util.Objects;
 import java.util.Random;
 
 public class Enemy1 extends OpponentAI
 {
-    String[] moves = {"Block", "Attack", "Attack", "Attack", "Heal", "Block"};
+    String[] moves = {"Block", "Attack", "Attack", "Attack", "Block", "Heal"};
     int index = 0;
 
     Entity player;
@@ -16,7 +15,6 @@ public class Enemy1 extends OpponentAI
         super(player, self);
         this.player = player;
         this.self = self;
-        decisionString = "Hello2";
     }
 
     @Override
@@ -25,20 +23,18 @@ public class Enemy1 extends OpponentAI
         player.damage(incoming);
     }
 
-    int maxDamageAmount = 30;
-    int damageAmount;
+    int damageAmount = 30;
     @Override
     public void decision()
     {
-        damageAmount = getRandomNumber(10, maxDamageAmount);
-        if (Objects.equals(moves[index], "Attack"))
+        damageAmount = getRandomNumber(10, damageAmount);
+        if (moves[index] == "Attack")
         {
-            decisionString = "Opponent will " + moves[index] + " for " + damageAmount;
-            System.out.println(decisionString);
+            System.out.println("Opponent will " + moves[index] + " for " + damageAmount);
         }
         else
         {
-            decisionString = "Opponent will " + moves[index];
+            System.out.println("Opponent will " + moves[index]);
         }
     }
 

@@ -1,11 +1,6 @@
 package Entity;
 
-import main.ArtLoader;
-import main.TextRenderer;
-
-import java.awt.*;
 import java.util.Random;
-
 
 public class OpponentAI
 {
@@ -14,8 +9,6 @@ public class OpponentAI
 
     Entity player;
     Entity self;
-
-    public String decisionString = "Hello";
 
     public OpponentAI(Entity player, Entity self)
     {
@@ -72,10 +65,5 @@ public class OpponentAI
         {
             index = 0;
         }
-    }
-
-    public void renderDecision(Graphics2D g2)
-    {
-        TextRenderer.renderText(g2, decisionString, ArtLoader.perfectFont, Color.white, 600, 600);
     }
 }

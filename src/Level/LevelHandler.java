@@ -48,7 +48,6 @@ public class LevelHandler
     public void renderLevel(Graphics2D g2)
     {
         currentLevel.updateLevel(g2, turnH);
-        currentLevel.enemyAI.renderDecision(g2);
 
         /*
         CH.renderDeck(g2); //renders the hand always
