@@ -10,6 +10,8 @@ public class HealthBar
 {
     Entity entity;
     public String name;
+    double widthOfBar = (GamePanel.screenWidth / 3.2);
+    int heightOfBar = 13 * GamePanel.scaleWindow;
 
     public HealthBar(Entity entity, String name)
     {
@@ -28,9 +30,7 @@ public class HealthBar
         shiftDown *= GamePanel.scaleWindow;
         shiftRight *= GamePanel.scaleWindow;
 
-        double widthOfBar = (GamePanel.screenWidth / 3.2);
         int blockWidth = (int)(percentShield * widthOfBar);
-        int heightOfBar = 13 * GamePanel.scaleWindow;
 
         if (topLeft)
         {
@@ -47,6 +47,9 @@ public class HealthBar
 
             //Render name
             TextRenderer.renderText(g2, name, ArtLoader.perfectFont, Color.white, (int) (x + widthOfBar) - fm.stringWidth(name), y - 4);
+
+            //render Opponent intention
+            //TextRenderer.renderText(g2, name, ArtLoader.perfectFont, Color.white, (int) (x + widthOfBar) - fm.stringWidth(name), y - heightOfBar - 4);
         }
 
         //render max health bar

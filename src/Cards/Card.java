@@ -22,11 +22,12 @@ public class Card
 
     public int cardWbyPixels = 73;
     public int cardHbyPixels = 103;
+    public int shrinkWithSize = 0;
 
     //73x103
 
-    public int cardW = (cardWbyPixels * GamePanel.scaleWindow - GamePanel.shrinkCards);
-    public int cardH = (cardHbyPixels * GamePanel.scaleWindow - GamePanel.shrinkCards);
+    public int cardW = (cardWbyPixels * GamePanel.scaleWindow - GamePanel.finalShrinkCards);
+    public int cardH = (cardHbyPixels * GamePanel.scaleWindow - GamePanel.finalShrinkCards);
 
     public Card(String name, String type, int energyCost, BufferedImage sprite, CardHandler CH)
     {
@@ -37,8 +38,13 @@ public class Card
         this.CH = CH;
     }
 
-    public void drawToScreen(Graphics2D g2, Card card, int x, int y)
+    public void drawToScreen(Graphics2D g2, Card card, int x, int y, CardHandler CH)
     {
+        if (CH.hand.size() == 7) //work on this
+        {
+            shrinkWithSize = 50;
+        }
+
 
         if (card.sprite != null)
         {

@@ -48,6 +48,7 @@ public class TurnHandler
     public void renderTurnButton(Graphics2D g2)
     {
         g2.drawImage(ArtLoader.endTurnArt, (int)buttonX, (int)buttonY, buttonW, buttonH, null);
+        TextRenderer.renderText(g2, String.valueOf(LH.currentLevel.CH.energy), ArtLoader.perfectFont, Color.white, (int)buttonX + buttonW/2, (int)buttonY + buttonH + 30);
     }
 
     public void startEnemyTurn()
@@ -67,6 +68,11 @@ public class TurnHandler
         LH.currentLevel.CH.energy = LH.currentLevel.energyReplenishAmount;
         LH.currentLevel.CH.hand.clear();
         LH.currentLevel.CH.buildDeck(6);
+    }
+
+    public void renderOpponentDecision(Graphics2D g2, Font font, int x, int y)
+    {
+        
     }
 
 
