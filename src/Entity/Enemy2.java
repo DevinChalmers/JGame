@@ -21,7 +21,7 @@ public class Enemy2 extends OpponentAI
     @Override
     public void damagePlayer(int incoming)
     {
-        player.damage(getRandomNumber(0,40));
+        player.damage(incoming);
     }
 
     int damageAmount = 30;
@@ -31,11 +31,13 @@ public class Enemy2 extends OpponentAI
         damageAmount = getRandomNumber(10, damageAmount);
         if (moves[index] == "Attack")
         {
-            System.out.println("Opponent will " + moves[index] + " for " + damageAmount);
+            decisionString = "Opponent will " + moves[index] + " for " + damageAmount;
+            System.out.println(decisionString);
         }
         else
         {
-            System.out.println("Opponent will " + moves[index]);
+            decisionString = "Opponent will " + moves[index];
+            System.out.println(decisionString);
         }
     }
 

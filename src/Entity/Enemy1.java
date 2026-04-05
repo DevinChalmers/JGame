@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Enemy1 extends OpponentAI
 {
-    String[] moves = {"Block", "Attack", "Attack", "Attack", "Block", "Heal"};
+    String[] moves = {"Attack", "Attack", "Attack", "Block", "Heal"};
     int index = 0;
 
     Entity player;
@@ -35,11 +35,13 @@ public class Enemy1 extends OpponentAI
         damageAmount = getRandomNumber(10, damageAmount);
         if (moves[index] == "Attack")
         {
-            System.out.println("Opponent will " + moves[index] + " for " + damageAmount);
+            decisionString = "Opponent will " + moves[index] + " for " + damageAmount;
+            System.out.println(decisionString);
         }
         else
         {
-            System.out.println("Opponent will " + moves[index]);
+            decisionString = "Opponent will " + moves[index];
+            System.out.println(decisionString);
         }
 
 

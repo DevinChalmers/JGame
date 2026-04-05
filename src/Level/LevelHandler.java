@@ -50,6 +50,7 @@ public class LevelHandler
     {
         currentLevel.updateLevel(g2, turnH);
         currentLevel.checkEndGame();
+        currentLevel.enemyAI.renderOpponentDecision(g2, ArtLoader.perfectFont);
 
         /*
         CH.renderDeck(g2); //renders the hand always

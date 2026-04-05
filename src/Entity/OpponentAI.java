@@ -19,7 +19,7 @@ public class OpponentAI
     int y;
     LevelHandler LH;
 
-    String decisionString;
+    String decisionString = "YO";
 
 
     public OpponentAI(Entity player, Entity self, LevelHandler LH)
@@ -27,13 +27,11 @@ public class OpponentAI
         this.player = player;
         this.self = self;
         this.LH = LH;
-        x = GamePanel.screenWidth - (int) (LH.currentLevel.enemy.healthBar.widthOfBar) + 5;
-        y = GamePanel.screenHeight - (2 * (GamePanel.screenHeight / 2)) + 5;
     }
 
     public void damagePlayer(int incoming)
     {
-        player.damage(getRandomNumber(0,40));
+
     }
 
     public void decision()
@@ -85,6 +83,6 @@ public class OpponentAI
     public void renderOpponentDecision(Graphics2D g2, Font font)
     {
         //render decision
-        TextRenderer.renderText(g2, decisionString, font, Color.white, x, y);
+        TextRenderer.renderText(g2, decisionString, font, Color.white, 600, 600);
     }
 }
