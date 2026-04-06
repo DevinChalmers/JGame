@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 import Cards.*;
 import Entity.*;
+import main.ArtLoader;
 
 public class Attack extends Card
 {
@@ -20,4 +21,5 @@ public class Attack extends Card
         CH.energy -= energyCost;
         enemy.damage(20);
     }
+
 }

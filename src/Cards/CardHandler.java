@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Entity.*;
 
+import main.ArtLoader;
 import main.GamePanel;
 import Level.LevelHandler;
 import main.TurnHandler;
@@ -30,6 +31,7 @@ public class CardHandler
         this.enemy = enemy;
         this.turnH = LH.turnH;
     }
+
     public int calculateCardX(int i)
     {
         return (GamePanel.screenWidth - (hand.size() * hand.get(i).cardW)) / 2 + (i * hand.get(i).cardW);
@@ -125,10 +127,12 @@ public class CardHandler
     }
 
 
-
+    int lastHoveredCard = -1;
     public void checkCardHover(int mouseX, int mouseY)
     {
         hoveredCard = -1; //resets hovered card
+
+
         for (int i = 0; i < cardBounds.size(); i++)
         {
             if (cardBounds.get(i).contains(mouseX, mouseY) && cardBounds.get(i) != null)
@@ -137,5 +141,12 @@ public class CardHandler
             }
 
         }
+
+        if (hoveredCard != lastHoveredCard && hoveredCard != -1)
+        {
+            ArtLoader.playSound(ArtLoader.cardHover, -10); //plays card sound if the hovered card switches
+        }
+
+        lastHoveredCard = hoveredCard;
     }
 }

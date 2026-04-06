@@ -3,6 +3,7 @@ package Cards.CardClasses;
 import Cards.Card;
 import Cards.CardHandler;
 import Entity.Entity;
+import main.ArtLoader;
 
 import java.awt.image.BufferedImage;
 
@@ -21,5 +22,6 @@ public class Firewall extends Card
         CH.energy -= energyCost;
         player.addBlock(12);
         player.health += 7;
+        ArtLoader.playSound(ArtLoader.attackSound, -10);
     }
 }

@@ -3,6 +3,7 @@ package Cards.CardClasses;
 import Cards.Card;
 import Cards.CardHandler;
 import Entity.Entity;
+import main.ArtLoader;
 
 import java.awt.image.BufferedImage;
 
@@ -22,5 +23,6 @@ public class Memory extends Card
         enemy.damage(15);
         CH.hand.add(CH.CI.randomCard()); //draw random cards
         CH.hand.add(CH.CI.randomCard());
+        ArtLoader.playSound(ArtLoader.attackSound, -10);
     }
 }

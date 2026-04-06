@@ -6,6 +6,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+
 public class ArtLoader
 {
     public static BufferedImage cardArt;
@@ -17,9 +22,12 @@ public class ArtLoader
     public static BufferedImage firewallArt;
     public static BufferedImage memoryArt;
 
+    public static Clip click;
+    public static Clip cardHover;
+    public static Clip attackSound;
+
     public static Font perfectFont;
     public static Font smallPerfectFont;
-
 
     public static void load() throws IOException, FontFormatException {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -33,12 +41,14 @@ public class ArtLoader
             firewallArt = ImageIO.read(new File("cardAssets/firewall.png"));
             memoryArt = ImageIO.read(new File("cardAssets/memory.png"));
 
+            cardHover = loadSound("SoundEffects/cardHover.wav");
+            attackSound = loadSound("SoundEffects/attack.wav");
 
 
             endTurnArt = ImageIO.read(new File("UIAssets/endturn.png"));
             shieldArt = ImageIO.read(new File("UIAssets/shield.png"));
 
-        }catch (IOException e)
+        }catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -50,10 +60,23 @@ public class ArtLoader
         ge.registerFont(perfectFont);
 
 
+    }
 
+    private static Clip loadSound(String path) throws Exception
+    {
+        AudioInputStream audio = AudioSystem.getAudioInputStream(new File(path));
+        Clip clip = AudioSystem.getClip();
+        clip.open(audio);
+        return clip;
+    }
 
-
-
+    public static void playSound(Clip clip, float volume)
+    {
+        if (clip == null) return;
+        clip.setFramePosition(0);
+        FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(volume);
+        clip.start();
     }
 
 
