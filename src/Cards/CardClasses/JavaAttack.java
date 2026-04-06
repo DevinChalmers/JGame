@@ -21,6 +21,6 @@ public class JavaAttack extends Card
         System.out.println(CH.energy + " energy remaining");
         CH.energy -= energyCost;
         enemy.damage(10);
-        ArtLoader.playSound(ArtLoader.attackSound, -10);
+        ArtLoader.playSound(ArtLoader.attackSound, -23);
     }
 }

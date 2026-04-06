@@ -22,6 +22,6 @@ public class Firewall extends Card
         CH.energy -= energyCost;
         player.addBlock(12);
         player.health += 7;
-        ArtLoader.playSound(ArtLoader.attackSound, -10);
+        ArtLoader.playSound(ArtLoader.shieldSound, -18);
     }
 }

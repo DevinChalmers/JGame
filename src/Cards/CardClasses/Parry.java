@@ -3,6 +3,7 @@ package Cards.CardClasses;
 import Cards.Card;
 import Cards.CardHandler;
 import Entity.Entity;
+import main.ArtLoader;
 
 import java.awt.image.BufferedImage;
 
@@ -20,5 +21,6 @@ public class Parry extends Card
         System.out.println(CH.energy + " energy remaining");
         CH.energy -= energyCost;
         player.addBlock(7);
+        ArtLoader.playSound(ArtLoader.shieldSound, -18);
     }
 }

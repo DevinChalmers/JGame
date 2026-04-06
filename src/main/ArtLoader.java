@@ -22,14 +22,15 @@ public class ArtLoader
     public static BufferedImage firewallArt;
     public static BufferedImage memoryArt;
 
-    public static Clip click;
+    public static Clip shieldSound;
     public static Clip cardHover;
     public static Clip attackSound;
 
     public static Font perfectFont;
     public static Font smallPerfectFont;
 
-    public static void load() throws IOException, FontFormatException {
+    public static void load() throws IOException, FontFormatException
+    {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
         try
@@ -43,6 +44,7 @@ public class ArtLoader
 
             cardHover = loadSound("SoundEffects/cardHover.wav");
             attackSound = loadSound("SoundEffects/attack.wav");
+            shieldSound = loadSound("SoundEffects/shield.wav");
 
 
             endTurnArt = ImageIO.read(new File("UIAssets/endturn.png"));
