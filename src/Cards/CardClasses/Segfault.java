@@ -7,10 +7,10 @@ import main.ArtLoader;
 
 import java.awt.image.BufferedImage;
 
-public class Firewall extends Card
+public class Segfault extends Card
 {
 
-    public Firewall(String name, String type, int energyCost, BufferedImage sprite, CardHandler CH)
+    public Segfault(String name, String type, int energyCost, BufferedImage sprite, CardHandler CH)
     {
         super(name, type, energyCost, sprite, CH);
     }
@@ -20,8 +20,9 @@ public class Firewall extends Card
     {
         System.out.println(CH.energy + " energy remaining");
         CH.energy -= energyCost;
-        CH.energy += 2;
-        player.health += 7;
-        ArtLoader.playSound(ArtLoader.shieldSound, -18);
+        player.health -= 15;
+        CH.cardAmount +=1;
+        System.out.println(CH.cardAmount);
+        ArtLoader.playSound(ArtLoader.attackSound, -23);
     }
 }

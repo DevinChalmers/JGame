@@ -38,7 +38,7 @@ public class Level2 extends BaseLevel
         enemy = new Entity(500, 500, 50, "C-Plus-Plus");
         enemyAI = new Enemy2(player, enemy, LevelH);
 
-        CH = new CardHandler(player, enemy, LevelH);
+        CH = new CardHandler(player, enemy, LevelH,6 );
 
         turnH.endEnemyTurn();
 

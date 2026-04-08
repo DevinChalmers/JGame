@@ -20,16 +20,18 @@ public class CardHandler
     TurnHandler turnH;
     Entity player;
     Entity enemy;
+    public int cardAmount = 6;
 
     int hoveredCard = -1;
     double hoverAmount = 22 * GamePanel.scaleWindow; //in pixels
     boolean debugBoundBox;
 
-    public CardHandler(Entity player, Entity enemy, LevelHandler LH)
+    public CardHandler(Entity player, Entity enemy, LevelHandler LH, int cardAmount)
     {
         this.player = player;
         this.enemy = enemy;
         this.turnH = LH.turnH;
+        this.cardAmount = cardAmount;
     }
 
     public int calculateCardX(int i)
@@ -72,7 +74,7 @@ public class CardHandler
         }
     }
 
-    public void buildDeck(int cardAmount)
+    public void buildDeck()
     {
         for (int i = 0; i < cardAmount; i++)
         {

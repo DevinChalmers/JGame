@@ -21,6 +21,7 @@ public class ArtLoader
     public static BufferedImage infiniteArt;
     public static BufferedImage firewallArt;
     public static BufferedImage memoryArt;
+    public static BufferedImage segfaultArt;
 
     public static Clip shieldSound;
     public static Clip cardHover;
@@ -41,6 +42,7 @@ public class ArtLoader
             infiniteArt = ImageIO.read(new File("cardAssets/infinite.png"));
             firewallArt = ImageIO.read(new File("cardAssets/firewall.png"));
             memoryArt = ImageIO.read(new File("cardAssets/memory.png"));
+            segfaultArt = ImageIO.read(new File("cardAssets/segfault.png"));
 
             cardHover = loadSound("SoundEffects/cardHover.wav");
             attackSound = loadSound("SoundEffects/attack.wav");
