@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class GamePanel extends JPanel implements Runnable
 {
-    public static final int scaleWindow = 4; //USE THIS TO SCALE WINDOW (RECOMMENDED = 3)
+    public static final int scaleWindow = 3; //USE THIS TO SCALE WINDOW (RECOMMENDED = 3)
     public static final int finalShrinkCards = 60;   //by pixel
 
     //static final int originalTileSize = 76;
