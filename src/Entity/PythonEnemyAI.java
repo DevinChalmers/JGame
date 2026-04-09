@@ -31,6 +31,8 @@ public class PythonEnemyAI extends OpponentAI
     int maxDamageAmount = 25;
     int minDamageAmount = 2;
     int randomDamageAmount = 0;
+    int maxHealAmt = 20;
+    int maxBlockAmt = 20;
 
     @Override
     public void decision()
@@ -46,8 +48,6 @@ public class PythonEnemyAI extends OpponentAI
             decisionString = name + " will " + moves[index];
             System.out.println(decisionString);
         }
-
-
     }
 
     @Override
@@ -61,13 +61,11 @@ public class PythonEnemyAI extends OpponentAI
 
         else if(moves[index] == "Block")
         {
-            self.addBlock(getRandomNumber(0,20));
+            self.addBlock(getRandomNumber(0,maxBlockAmt));
         }
 
         else if(moves[index] == "Heal")
         {
-            int maxHealAmt = 20;
-
             if (self.health < self.maxHealth && (self.maxHealth - self.health) > maxHealAmt)
             {
                 self.health += getRandomNumber(0, maxHealAmt);
