@@ -19,7 +19,8 @@ public class OpponentAI
     int y;
     LevelHandler LH;
 
-    String decisionString = "YO";
+    String decisionString = "";
+
 
 
     public OpponentAI(Entity player, Entity self, LevelHandler LH)

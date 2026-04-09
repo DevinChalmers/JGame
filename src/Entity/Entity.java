@@ -6,20 +6,26 @@ public class Entity
     public int maxHealth;
     public int block;
     public HealthBar healthBar;
-
-    //public String name;
+    public String name;
+    public int vulnerability = 0;
 
     public Entity(int initialHealth, int MaxHealth, int initialBlock, String name)
     {
         health = initialHealth;
         this.maxHealth = MaxHealth; //stores max health for later
         block = initialBlock;
+        this.name = name;
 
         healthBar = new HealthBar(this, name);
     }
 
     public void damage(int incoming)
     {
+        if (vulnerability > 0 )
+        {
+            incoming = (int) (incoming * 1.25); //if the entity has vulnerability, apply 25% more damage
+        }
+
         if (block > 0)
         {
             int remainingBlock =  block - incoming;
@@ -51,5 +57,18 @@ public class Entity
     public void setBlock(int blockAmount)
     {
         block = blockAmount;
+    }
+
+    public void applyVulnerability(int amount)
+    {
+        vulnerability += amount;
+    }
+
+    public void lowerVulnerability()
+    {
+        if (vulnerability > 0)
+        {
+            vulnerability -= 1;
+        }
     }
 }

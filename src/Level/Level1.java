@@ -1,12 +1,10 @@
 package Level;
 
 import Cards.CardHandler;
-import Cards.CardInitializer;
 import Entity.*;
 import main.*;
 
 import java.awt.*;
-import java.util.logging.Level;
 
 public class Level1 extends BaseLevel
 {
@@ -18,7 +16,6 @@ public class Level1 extends BaseLevel
         energyReplenishAmount = 4;
         this.LevelH = LevelH;
         this.turnH = turnH;
-        enemyAI = new Enemy1(player, enemy, LevelH);
     }
 
     @Override
@@ -39,7 +36,7 @@ public class Level1 extends BaseLevel
     {
         player = new Entity(playerStartingHealth, 100, 0, "Player");
         enemy = new Entity(250, 250, 50, "Python");
-        enemyAI = new Enemy1(player, enemy, LevelH);
+        enemyAI = new PythonEnemyAI(player, enemy, LevelH);
 
         CH = new CardHandler(player, enemy, LevelH, 5);
 

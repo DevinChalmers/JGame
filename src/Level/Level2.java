@@ -2,7 +2,6 @@ package Level;
 
 import Cards.CardHandler;
 import Entity.*;
-import Entity.OpponentAI;
 import main.ArtLoader;
 import main.*;
 
@@ -36,7 +35,7 @@ public class Level2 extends BaseLevel
     {
         player = new Entity(playerStartingHealth, 100, 0, "Player");
         enemy = new Entity(500, 500, 50, "C-Plus-Plus");
-        enemyAI = new Enemy2(player, enemy, LevelH);
+        enemyAI = new CPlusEnemyAI(player, enemy, LevelH);
 
         CH = new CardHandler(player, enemy, LevelH,5);
 

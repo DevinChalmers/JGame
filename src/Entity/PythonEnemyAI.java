@@ -1,25 +1,25 @@
 package Entity;
 
 import Level.LevelHandler;
-import main.TextRenderer;
 
-import java.awt.*;
 import java.util.Random;
 
-public class Enemy1 extends OpponentAI
+public class PythonEnemyAI extends OpponentAI
 {
     String[] moves = {"Attack", "Attack", "Attack", "Block", "Heal"};
     int index = 0;
 
     Entity player;
     Entity self;
+    String name;
 
-    public Enemy1(Entity player, Entity self, LevelHandler LH)
+    public PythonEnemyAI(Entity player, Entity self, LevelHandler LH)
     {
         super(player, self, LH);
         this.player = player;
         this.self = self;
         this.LH = LH;
+        name = self.name;
     }
 
     @Override
@@ -31,18 +31,19 @@ public class Enemy1 extends OpponentAI
     int maxDamageAmount = 25;
     int minDamageAmount = 2;
     int randomDamageAmount = 0;
+
     @Override
     public void decision()
     {
         randomDamageAmount = getRandomNumber(minDamageAmount, maxDamageAmount);
         if (moves[index] == "Attack")
         {
-            decisionString = "Opponent will " + moves[index] + " for " + randomDamageAmount;
+            decisionString = name + " will " + moves[index] + " for " + randomDamageAmount;
             System.out.println(decisionString);
         }
         else
         {
-            decisionString = "Opponent will " + moves[index];
+            decisionString = name + " will " + moves[index];
             System.out.println(decisionString);
         }
 

@@ -19,6 +19,7 @@ public class CardInitializer
         allCards.add(new Memory("Memory Leak", "Attack", 1, ArtLoader.memoryArt, CH));
         allCards.add(new Firewall("Firewall", "Attack", 2, ArtLoader.firewallArt, CH));
         allCards.add(new Segfault("Segfault", "Bug", 1, ArtLoader.segfaultArt, CH));
+        allCards.add(new Ping("Ping", "Skill", 1, ArtLoader.pingArt, CH));
     }
 
     public Card randomCard()

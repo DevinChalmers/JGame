@@ -61,19 +61,15 @@ public class TurnHandler
 
     public void endEnemyTurn()
     {
-
         LH.currentLevel.enemyAI.decision();
         LH.currentLevel.player.setBlock(0);
         playerTurn = true;
         LH.currentLevel.CH.energy = LH.currentLevel.energyReplenishAmount;
         LH.currentLevel.CH.hand.clear();
         LH.currentLevel.CH.buildDeck();
+        LH.currentLevel.enemy.lowerVulnerability();
+        System.out.println("VUL = " + LH.currentLevel.enemy.vulnerability);
+        LH.currentLevel.enemy.lowerVulnerability();
     }
-
-    public void renderOpponentDecision(Graphics2D g2, Font font, int x, int y)
-    {
-        
-    }
-
 
 }

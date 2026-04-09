@@ -2,20 +2,22 @@ package Entity;
 
 import Level.LevelHandler;
 
-public class Enemy2 extends OpponentAI
+public class CPlusEnemyAI extends OpponentAI
 {
     String[] moves = {"Attack", "Attack", "Block", "Attack", "Heal"};
     int index = 0;
 
     Entity player;
     Entity self;
+    String name;
 
-    public Enemy2(Entity player, Entity self, LevelHandler LH)
+    public CPlusEnemyAI(Entity player, Entity self, LevelHandler LH)
     {
         super(player, self, LH);
         this.player = player;
         this.self = self;
         this.LH = LH;
+        name = self.name;
     }
 
     @Override
@@ -33,12 +35,12 @@ public class Enemy2 extends OpponentAI
         randomDamageAmount = getRandomNumber(minDamageAmount, maxDamageAmount);
         if (moves[index] == "Attack")
         {
-            decisionString = "Opponent will " + moves[index] + " for " + randomDamageAmount;
+            decisionString = name + " will " + moves[index] + " for " + randomDamageAmount;
             System.out.println(decisionString);
         }
         else
         {
-            decisionString = "Opponent will " + moves[index];
+            decisionString = name + " will " + moves[index];
             System.out.println(decisionString);
         }
     }
