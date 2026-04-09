@@ -20,8 +20,8 @@ public class Firewall extends Card
     {
         System.out.println(CH.energy + " energy remaining");
         CH.energy -= energyCost;
-        CH.energy += 2;
-        player.health += 7;
+        CH.energy += 1;
+        player.addBlock(12);
         ArtLoader.playSound(ArtLoader.shieldSound, -18);
     }
 }

@@ -23,7 +23,7 @@ public class CardHandler
     public int cardAmount = 6;
 
     int hoveredCard = -1;
-    double hoverAmount = 22 * GamePanel.scaleWindow; //in pixels
+    double hoverAmount = GamePanel.screenHeight / 15 * 2; //in pixels
     boolean debugBoundBox;
 
     public CardHandler(Entity player, Entity enemy, LevelHandler LH, int cardAmount)
@@ -36,21 +36,45 @@ public class CardHandler
 
     public int calculateCardX(int i)
     {
-        return (GamePanel.screenWidth - (hand.size() * hand.get(i).cardW)) / 2 + (i * hand.get(i).cardW);
+        int cardW = getDynamicCardWidth();
+        return (GamePanel.screenWidth - (hand.size() * cardW)) / 2 + (i * cardW);
     }
 
 
     public int calculateCardY(int i)
     {
+        int cardH = getDynamicCardHeight();
+        int baseY = GamePanel.screenHeight - (int)(cardH/1.8);
         if (i == hoveredCard)
         {
-            return (int) (GamePanel.screenHeight - GamePanel.screenHeight / (hand.get(i).defaultY) - hoverAmount);
+            return baseY - (int)(cardH/3);
         }
         else
         {
-            return (int) (GamePanel.screenHeight - GamePanel.screenHeight / (hand.get(i).defaultY));
+            return baseY;
         }
     }
+
+
+
+    public int getDynamicCardWidth()
+    {
+        int maxWidth = (int)(80*GamePanel.scaleWindow);
+        int minWidth = (int)(40*GamePanel.scaleWindow);
+
+        int availableWidth = GamePanel.screenWidth - 100;
+        int calculatedWidth = availableWidth / hand.size();
+        return Math.max(minWidth, Math.min(maxWidth, calculatedWidth));
+    }
+
+    public int getDynamicCardHeight()
+    {
+        return (int)(getDynamicCardWidth() * 1.5f); // maintains aspect ratio
+    }
+
+
+
+
 
     public void handleCardBounds(Graphics2D g2)
     {
@@ -58,10 +82,12 @@ public class CardHandler
 
         for (int i = 0; i < hand.size(); i++)
         {
+            int cardW = getDynamicCardWidth();
+            int cardH = getDynamicCardHeight();
             int x = calculateCardX(i);
             int y = calculateCardY(i);
 
-            cardBounds.add(new Rectangle(x, y, hand.get(i).cardW, hand.get(i).cardH)); //creates inv rectangle to use as collision
+            cardBounds.add(new Rectangle(x, y, cardW, cardH)); //creates inv rectangle to use as collision
 
             //debugging visuals
             if (debugBoundBox) 
@@ -84,13 +110,15 @@ public class CardHandler
 
     public void renderDeck(Graphics2D g2)
     {
+        int cardW = getDynamicCardWidth();
+        int cardH = getDynamicCardHeight();
         for (int i = 0; i < hand.size(); i++)
         {
             hand.get(i).drawToScreen(
                     g2,
                     hand.get(i),
                     calculateCardX(i),
-                    calculateCardY(i), this); //cards take the last 4th of the screen by default
+                    calculateCardY(i), cardW, cardH,this); //cards take the last 4th of the screen by default
         }
     }
 

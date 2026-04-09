@@ -23,9 +23,11 @@ public class ArtLoader
     public static BufferedImage memoryArt;
     public static BufferedImage segfaultArt;
 
+
     public static Clip shieldSound;
     public static Clip cardHover;
     public static Clip attackSound;
+    public static Clip skillSound;
 
     public static Font perfectFont;
     public static Font smallPerfectFont;
@@ -47,6 +49,7 @@ public class ArtLoader
             cardHover = loadSound("SoundEffects/cardHover.wav");
             attackSound = loadSound("SoundEffects/attack.wav");
             shieldSound = loadSound("SoundEffects/shield.wav");
+            skillSound = loadSound("SoundEffects/skill.wav");
 
 
             endTurnArt = ImageIO.read(new File("UIAssets/endturn.png"));

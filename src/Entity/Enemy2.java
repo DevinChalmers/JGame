@@ -24,14 +24,16 @@ public class Enemy2 extends OpponentAI
         player.damage(incoming);
     }
 
-    int damageAmount = 30;
+    int maxDamageAmount = 27;
+    int minDamageAmount = 2;
+    int randomDamageAmount = 0;
     @Override
     public void decision()
     {
-        damageAmount = getRandomNumber(10, damageAmount);
+        randomDamageAmount = getRandomNumber(minDamageAmount, maxDamageAmount);
         if (moves[index] == "Attack")
         {
-            decisionString = "Opponent will " + moves[index] + " for " + damageAmount;
+            decisionString = "Opponent will " + moves[index] + " for " + randomDamageAmount;
             System.out.println(decisionString);
         }
         else
@@ -46,8 +48,8 @@ public class Enemy2 extends OpponentAI
     {
         if(moves[index] == "Attack")
         {
-            System.out.println(damageAmount);
-            damagePlayer(damageAmount);
+            System.out.println(randomDamageAmount);
+            damagePlayer(randomDamageAmount);
         }
         
         else if(moves[index] == "Block")

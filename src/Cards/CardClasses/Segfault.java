@@ -20,9 +20,9 @@ public class Segfault extends Card
     {
         System.out.println(CH.energy + " energy remaining");
         CH.energy -= energyCost;
-        player.health -= 15;
+        player.damage(27);
         CH.cardAmount +=1;
         System.out.println(CH.cardAmount);
-        ArtLoader.playSound(ArtLoader.attackSound, -23);
+        ArtLoader.playSound(ArtLoader.skillSound, -19);
     }
 }

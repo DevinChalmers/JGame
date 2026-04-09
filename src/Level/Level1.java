@@ -41,7 +41,7 @@ public class Level1 extends BaseLevel
         enemy = new Entity(250, 250, 50, "Python");
         enemyAI = new Enemy1(player, enemy, LevelH);
 
-        CH = new CardHandler(player, enemy, LevelH, 6);
+        CH = new CardHandler(player, enemy, LevelH, 5);
 
         turnH.endEnemyTurn();
 
