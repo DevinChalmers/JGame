@@ -22,10 +22,10 @@ public class ArtLoader
     public static BufferedImage firewallArt;
     public static BufferedImage memoryArt;
     public static BufferedImage segfaultArt;
+    public static BufferedImage compileArt;
     public static BufferedImage pingArt;
     public static BufferedImage level1Background;
     public static BufferedImage level2Background;
-
 
     public static Clip shieldSound;
     public static Clip cardHover;
@@ -49,6 +49,7 @@ public class ArtLoader
             memoryArt = ImageIO.read(new File("cardAssets/memory.png"));
             segfaultArt = ImageIO.read(new File("cardAssets/segfault.png"));
             pingArt = ImageIO.read(new File("cardAssets/ping.png"));
+            compileArt = ImageIO.read(new File("cardAssets/compile.png"));
 
             cardHover = loadSound("SoundEffects/cardHover.wav");
             attackSound = loadSound("SoundEffects/attack.wav");

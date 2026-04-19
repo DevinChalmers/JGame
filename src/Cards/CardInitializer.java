@@ -20,6 +20,7 @@ public class CardInitializer
         allCards.add(new Firewall("Firewall", "Attack", 2, ArtLoader.firewallArt, CH));
         allCards.add(new Segfault("Segfault", "Bug", 1, ArtLoader.segfaultArt, CH));
         allCards.add(new Ping("Ping", "Skill", 1, ArtLoader.pingArt, CH));
+        allCards.add(new Compile("Compile", "Attack", 1, ArtLoader.compileArt, CH));
     }
 
     public Card randomCard()
