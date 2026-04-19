@@ -22,7 +22,6 @@ public class OpponentAI
     String decisionString = "";
 
 
-
     public OpponentAI(Entity player, Entity self, LevelHandler LH)
     {
         this.player = player;

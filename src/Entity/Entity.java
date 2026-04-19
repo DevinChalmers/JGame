@@ -8,6 +8,18 @@ public class Entity
     public HealthBar healthBar;
     public String name;
     public int vulnerability = 0;
+    public OpponentAI opponentAI;
+
+    public Entity(int initialHealth, int MaxHealth, int initialBlock, String name, OpponentAI opponentAI)
+    {
+        health = initialHealth;
+        this.maxHealth = MaxHealth; //stores max health for later
+        block = initialBlock;
+        this.name = name;
+        this.opponentAI = opponentAI;
+
+        healthBar = new HealthBar(this, name);
+    }
 
     public Entity(int initialHealth, int MaxHealth, int initialBlock, String name)
     {

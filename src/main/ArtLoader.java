@@ -25,7 +25,8 @@ public class ArtLoader
     public static BufferedImage compileArt;
     public static BufferedImage pingArt;
     public static BufferedImage level1Background;
-    public static BufferedImage level2Background;
+    public static BufferedImage pythonFrame1;
+    public static BufferedImage pythonFrame2;
 
     public static Clip shieldSound;
     public static Clip cardHover;
@@ -57,7 +58,8 @@ public class ArtLoader
             skillSound = loadSound("SoundEffects/skill.wav");
 
             level1Background = ImageIO.read(new File("UIAssets/bg1.png"));
-            level2Background = ImageIO.read(new File("UIAssets/bg2.png"));
+            pythonFrame1 = ImageIO.read(new File("UIAssets/pythonframe1.png"));
+            pythonFrame2 = ImageIO.read(new File("UIAssets/pythonframe2.png"));
 
 
             endTurnArt = ImageIO.read(new File("UIAssets/endturn.png"));

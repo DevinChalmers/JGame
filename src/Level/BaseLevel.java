@@ -19,6 +19,10 @@ public class BaseLevel
     public boolean initialized;
     public int playerStartingHealth = 100;
 
+    public boolean enemyHit;
+    public int frameCount = 0;
+    public boolean frameStatus;
+
 
     public BaseLevel(LevelHandler LevelH, TurnHandler turnH, int playerStartingHealth)
     {

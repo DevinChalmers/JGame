@@ -46,8 +46,29 @@ public class Level1 extends BaseLevel
         initialized = true;
     }
 
+
     public void renderBackground(Graphics2D g2)
     {
-        g2.drawImage(ArtLoader.level2Background, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null);
+        frameCount++;
+        if (frameCount >= 60 && !enemyHit)
+        {
+            frameStatus = !frameStatus;
+            frameCount = 0;
+        }
+
+        if (frameStatus && !enemyHit)
+        {
+            g2.drawImage(ArtLoader.pythonFrame1, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null);
+        }
+        else if (!frameStatus && !enemyHit)
+        {
+            g2.drawImage(ArtLoader.pythonFrame2, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null);
+        }
+        else
+        {
+
+        }
+
+
     }
 }
