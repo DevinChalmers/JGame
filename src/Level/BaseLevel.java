@@ -53,5 +53,10 @@ public class BaseLevel
         }
     }
 
+    public void renderBackground(Graphics2D g2)
+    {
+
+    }
+
 
 }

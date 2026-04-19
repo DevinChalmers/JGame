@@ -23,6 +23,8 @@ public class ArtLoader
     public static BufferedImage memoryArt;
     public static BufferedImage segfaultArt;
     public static BufferedImage pingArt;
+    public static BufferedImage level1Background;
+    public static BufferedImage level2Background;
 
 
     public static Clip shieldSound;
@@ -52,6 +54,9 @@ public class ArtLoader
             attackSound = loadSound("SoundEffects/attack.wav");
             shieldSound = loadSound("SoundEffects/shield.wav");
             skillSound = loadSound("SoundEffects/skill.wav");
+
+            level1Background = ImageIO.read(new File("UIAssets/bg1.png"));
+            level2Background = ImageIO.read(new File("UIAssets/bg2.png"));
 
 
             endTurnArt = ImageIO.read(new File("UIAssets/endturn.png"));

@@ -23,6 +23,7 @@ public class Level1 extends BaseLevel
     {
         if (initialized)
         {
+            renderBackground(g2);
             CH.renderDeck(g2); //renders the hand always
             CH.handleCardBounds(g2); //renders collision boxes
             turnH.renderTurnButton(g2);
@@ -43,5 +44,10 @@ public class Level1 extends BaseLevel
         turnH.endEnemyTurn();
 
         initialized = true;
+    }
+
+    public void renderBackground(Graphics2D g2)
+    {
+        g2.drawImage(ArtLoader.level2Background, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null);
     }
 }

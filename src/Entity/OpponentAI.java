@@ -84,6 +84,6 @@ public class OpponentAI
     public void renderOpponentDecision(Graphics2D g2, Font font)
     {
         //render decision
-        TextRenderer.renderText(g2, decisionString, font, Color.white, GamePanel.screenWidth/2, GamePanel.screenHeight/2);
+        TextRenderer.renderText(g2, decisionString, font, Color.white, GamePanel.screenWidth - GamePanel.screenWidth/3, GamePanel.screenHeight/4);
     }
 }
