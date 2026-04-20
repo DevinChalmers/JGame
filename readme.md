@@ -1,4 +1,6 @@
 # JGame
+*Made by Devin Chalmers*
+
 A turn-based card game built in Java, inspired by [Slay The Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/) and programming themed.
 
 ## How to run
