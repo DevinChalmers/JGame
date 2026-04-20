@@ -18,7 +18,7 @@ Make sure the `cardAssets/`, `UIAssets/`, and `SoundEffects/` folders are in you
 - Click **End Turn** to end your turn and let the enemy act, then a new hand is dealt.
 - The enemies decision displays at the top right of the screen.
 - Use cards that apply **Block** to avoid damage. Similarly, enemies will do the same. Current **Block** amount is displayed by each health bar and resets at the end of every turn.
-- You may also play the **Ping** card, which applies vulnerable, dealing 25% damage for 2 turns.
+- You may also play the **Ping** card, which applies vulnerable, dealing 25% extra damage for 2 turns.
 - Survive through *Python* and *Sea Plus-Plus* languages to win.
 
 ## FAQ
