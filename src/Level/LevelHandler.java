@@ -10,6 +10,7 @@ public class LevelHandler
     public TurnHandler turnH;
 
     public BaseLevel currentLevel;
+    public StartMenu startMenu;
     public Level1 Level1;
     public Level2 Level2;
 
@@ -17,8 +18,9 @@ public class LevelHandler
     {
         turnH = new TurnHandler(this);
         Level1 = new Level1(this, turnH);
+        startMenu = new StartMenu(this, turnH);
         Level2 = new Level2(this, turnH);
-        currentLevel = Level1;
+        currentLevel = startMenu;
         currentLevel.init(100);
     }
 
@@ -26,7 +28,10 @@ public class LevelHandler
     {
         currentLevel.updateLevel(g2, turnH);
         currentLevel.checkEndGame();
-        currentLevel.enemyAI.renderOpponentDecision(g2, ArtLoader.perfectFont);
+        if (currentLevel.enemyAI != null)
+        {
+            currentLevel.enemyAI.renderOpponentDecision(g2, ArtLoader.perfectFont);
+        }
     }
 
 

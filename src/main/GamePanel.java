@@ -11,12 +11,6 @@ import java.io.IOException;
 public class GamePanel extends JPanel implements Runnable
 {
     public static final int scaleWindow = 3; //USE THIS TO SCALE WINDOW (RECOMMENDED = 3)
-    public static final int finalShrinkCards = 60;   //by pixel
-
-    //static final int originalTileSize = 76;
-    //public static final int tileSize = originalTileSize * scaleWindow; //40 x 40
-    //final int maxScreenCol = 16;
-    //final int maxScreenRow = 12;
 
     public static final int screenWidth = 450 * scaleWindow;  //tileSize * maxScreenCol;
     public static final int screenHeight = 250 * scaleWindow;  //tileSize * maxScreenRow;
@@ -24,7 +18,6 @@ public class GamePanel extends JPanel implements Runnable
     final int fps = 60;
     
     LevelHandler LevelH;
-    KeyHandler KeyH = new KeyHandler();
 
     Thread gameThread;
 
@@ -32,14 +25,13 @@ public class GamePanel extends JPanel implements Runnable
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
-        this.addKeyListener(KeyH);
         this.setFocusable(true);
 
         ArtLoader.load(); //load all card art
         LevelH = new LevelHandler(); //sets up level handler
 
         MouseListener MouseH = new MouseListener(this);
-        this.addMouseListener(MouseH);        // click events
+        this.addMouseListener(MouseH); // click events
         this.addMouseMotionListener(MouseH);
     }
 
@@ -72,11 +64,11 @@ public class GamePanel extends JPanel implements Runnable
 
     }
 
-    public void paintComponent(Graphics g) //what is this
+    public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
 
-        Graphics2D g2 = (Graphics2D)g; //what is this
+        Graphics2D g2 = (Graphics2D)g;
 
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR); //makes pixel art correct
 
@@ -91,7 +83,7 @@ public class GamePanel extends JPanel implements Runnable
         g2.dispose();
     }
 
-    public void startGameThread()
+    public void startGameThread() //handles game rendering loop
     {
         gameThread = new Thread(this);
         gameThread.start();
