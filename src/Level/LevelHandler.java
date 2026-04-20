@@ -11,6 +11,7 @@ public class LevelHandler
 
     public BaseLevel currentLevel;
     public StartMenu startMenu;
+    public WinScreen winScreen;
     public Level1 Level1;
     public Level2 Level2;
 
@@ -19,9 +20,10 @@ public class LevelHandler
         turnH = new TurnHandler(this);
         Level1 = new Level1(this, turnH);
         startMenu = new StartMenu(this, turnH);
+        winScreen = new WinScreen(this,turnH);
         Level2 = new Level2(this, turnH);
-        currentLevel = startMenu;
-        currentLevel.init(100);
+        currentLevel = startMenu; //start game at start menu
+        currentLevel.init(10000);
     }
 
     public void renderLevel(Graphics2D g2) throws InterruptedException

@@ -10,6 +10,7 @@ Make sure the `cardAssets/`, `UIAssets/`, and `SoundEffects/` folders are in you
 
 ## Gameplay
 - Play cards from your hand each turn by clicking them.
+- There are 9 unique cards. (Possibly more in the future)
 - Each card costs energy, and you must have enough to play the card. The cost is shown at the top of each card. Your current energy amount is displayed under the **End Turn** button.
 - Click **End Turn** to end your turn and let the enemy act, then a new hand is dealt.
 - The enemies decision displays at the top right of the screen.
@@ -21,6 +22,10 @@ Make sure the `cardAssets/`, `UIAssets/`, and `SoundEffects/` folders are in you
 - For some reason, sometimes I have trouble running it in VSCode, though the fix is simple.
 - Press Ctrl + Shift + P
 - Type "Clean Java Language Server Workspace" and press enter. Click "Reload and delete" in the bottom right color to apply the changes and the game should now work.
+
+### How do I scale the window?
+- In `/src/main/GamePanel.java`, you will find a *Scale Window* variable in which you can scale the window. 3 or 4 is recommended.
+
 ### How do I add new cards?
 - Place art within `/cardAssets`.
 - Make a static reference inside `/src/main/ArtLoader.java`.
@@ -30,6 +35,8 @@ Make sure the `cardAssets/`, `UIAssets/`, and `SoundEffects/` folders are in you
 - That's it! It's now in the random pool of cards.
 ### Was AI used?
 - AI was used to help with the [Mermaid](https://mermaid.ai/) UML diagram.
+### How was the art made?
+- The art was made by me using [Aseprite](https://www.aseprite.org/) and [Photoshop](https://www.adobe.com/products/photoshop.html).
 
 ## How OOP Concepts Were Used
 **Inheritance** — The game is built around inheritance . `Level1` and `Level2` both extend `BaseLevel`, sharing core level logic while overriding their own backgrounds and enemy setups. `PythonEnemyAI` and `CPlusEnemyAI` both extend `OpponentAI`, each with their own move sets and damage values. Every card (`JavaAttack`, `Parry`, `Segfault`, etc.) extends `Card` and overrides `cardAction()` to define its unique effect.
@@ -39,15 +46,15 @@ Make sure the `cardAssets/`, `UIAssets/`, and `SoundEffects/` folders are in you
 **Abstraction** — `BaseLevel` defines the template for what a level needs (`init()`, `updateLevel()`, `checkEndGame()`) without implementing the details, leaving that to the subclasses. This is the same with `Card` and `cardAction()`.
 
 ## Mermaid Code
----
-config:
-layout: elk
----
-classDiagram
-direction TB
-class Main {
-+main(args)
-}
+    ---
+    config:
+    layout: elk
+    ---
+    classDiagram
+    direction TB
+    class Main {
+    +main(args)
+    }
 
     class GamePanel {
 	    +int scaleWindow$
@@ -64,13 +71,16 @@ class Main {
     class MouseListener {
 	    +int mouseX
 	    +int mouseY
+	    +GamePanel gp
 	    +mouseReleased(e)
 	    +mouseMoved(e)
     }
 
     class TurnHandler {
 	    +boolean playerTurn
+	    +boolean enemyTurn
 	    +Rectangle buttonBox
+	    +LevelHandler LH
 	    +endTurn()
 	    +checkEndTurn(x, y)
 	    +startEnemyTurn()
@@ -81,9 +91,15 @@ class Main {
     class ArtLoader {
 	    +BufferedImage cardArt$
 	    +BufferedImage endTurnArt$
+	    +BufferedImage logoArt$
+	    +BufferedImage menuTextArt$
+	    +BufferedImage winScreenArt$
 	    +Clip attackSound$
 	    +Clip shieldSound$
+	    +Clip cardHover$
+	    +Clip noEnergySound$
 	    +Font perfectFont$
+	    +Font smallPerfectFont$
 	    +load()$
 	    +playSound(clip, volume)$
     }
@@ -95,6 +111,8 @@ class Main {
     class LevelHandler {
 	    +TurnHandler turnH
 	    +BaseLevel currentLevel
+	    +StartMenu startMenu
+	    +WinScreen winScreen
 	    +Level1 Level1
 	    +Level2 Level2
 	    +renderLevel(g2)
@@ -106,8 +124,11 @@ class Main {
 	    +CardHandler CH
 	    +OpponentAI enemyAI
 	    +int energyReplenishAmount
+	    +int playerStartingHealth
 	    +boolean initialized
 	    +boolean enemyHit
+	    +int frameCount
+	    +boolean frameStatus
 	    +init(playerStartingHealth)
 	    +updateLevel(g2, turnH)
 	    +checkEndGame()
@@ -118,12 +139,36 @@ class Main {
 	    +init(playerStartingHealth)
 	    +updateLevel(g2, turnH)
 	    +renderBackground(g2)
+	    +getPreviousFrameCount()
     }
 
     class Level2 {
 	    +init(playerStartingHealth)
 	    +updateLevel(g2, turnH)
 	    +renderBackground(g2)
+	    +getPreviousFrameCount()
+    }
+
+    class StartMenu {
+	    +int logoWidth
+	    +int logoHeight
+	    +int textWidth
+	    +int textHeight
+	    +init(playerStartingHealth)
+	    +updateLevel(g2, turnH)
+	    +renderBackground(g2)
+	    +getPreviousFrameCount()
+    }
+
+    class WinScreen {
+	    +int logoWidth
+	    +int logoHeight
+	    +int textWidth
+	    +int textHeight
+	    +init(playerStartingHealth)
+	    +updateLevel(g2, turnH)
+	    +renderBackground(g2)
+	    +getPreviousFrameCount()
     }
 
     class Entity {
@@ -133,6 +178,7 @@ class Main {
 	    +int vulnerability
 	    +String name
 	    +HealthBar healthBar
+	    +BaseLevel level
 	    +Clip hurtSound
 	    +damage(incoming)
 	    +addBlock(amount)
@@ -146,14 +192,17 @@ class Main {
 	    +Entity entity
 	    +String name
 	    +double widthOfBar
+	    +int heightOfBar
 	    +renderHealthBar(maxHealth, health, block, g2, topLeft, shiftRight, shiftDown, font)
     }
 
     class OpponentAI {
 	    +Entity player
 	    +Entity self
+	    +LevelHandler LH
 	    +String decisionString
 	    +String[] moves
+	    +int index
 	    +decision()
 	    +opponentAction()
 	    +damagePlayer(incoming)
@@ -165,13 +214,18 @@ class Main {
 	    +int maxDamageAmount
 	    +int minDamageAmount
 	    +int randomDamageAmount
+	    +int maxHealAmt
+	    +int maxBlockAmt
 	    +decision()
 	    +opponentAction()
 	    +damagePlayer(incoming)
+	    +getRandomNumber(min, max)
     }
 
     class CPlusEnemyAI {
 	    +int maxDamageAmount
+	    +int minDamageAmount
+	    +int randomDamageAmount
 	    +int maxHealAmt
 	    +int maxBlockAmt
 	    +decision()
@@ -192,12 +246,15 @@ class Main {
     }
 
     class CardHandler {
-	    +ArrayList hand
-	    +ArrayList cardBounds
+	    +ArrayList~Card~ hand
+	    +ArrayList~Rectangle~ cardBounds
 	    +CardInitializer CI
 	    +int energy
 	    +int cardAmount
 	    +int hoveredCard
+	    +Entity player
+	    +Entity enemy
+	    +TurnHandler turnH
 	    +calculateCardX(i)
 	    +calculateCardY(i)
 	    +getDynamicCardWidth()
@@ -210,12 +267,9 @@ class Main {
     }
 
     class CardInitializer {
-	    +ArrayList allCards
+	    +ArrayList~Card~ allCards
+	    +CardInitializer(CH)
 	    +randomCard()
-    }
-
-    class Attack {
-	    +cardAction(player, enemy)
     }
 
     class JavaAttack {
@@ -254,10 +308,20 @@ class Main {
 	    +cardAction(player, enemy)
     }
 
-    BaseLevel <|-- PythonEnemyAI
-    Level2 <|-- CPlusEnemyAI
+    BaseLevel <|-- Level1
+    BaseLevel <|-- Level2
+    BaseLevel <|-- StartMenu
+    BaseLevel <|-- WinScreen
+    OpponentAI <|-- PythonEnemyAI
+    OpponentAI <|-- CPlusEnemyAI
+    Card <|-- JavaAttack
+    Card <|-- Infinite
+    Card <|-- Memory
+    Card <|-- Firewall
     Card <|-- Compile
+    Card <|-- Parry
     Card <|-- Ping
+    Card <|-- Polymorphism
     Card <|-- Segfault
     Main --> GamePanel
     GamePanel --> LevelHandler
@@ -266,12 +330,14 @@ class Main {
     LevelHandler --> BaseLevel
     LevelHandler --> Level1
     LevelHandler --> Level2
+    LevelHandler --> StartMenu
+    LevelHandler --> WinScreen
     BaseLevel --> Entity : player
     BaseLevel --> Entity : enemy
     BaseLevel --> CardHandler
     BaseLevel --> OpponentAI
     Entity --> HealthBar
-    Entity --> BaseLevel : level
+    Entity --> BaseLevel : level ref
     CardHandler --> CardInitializer
     CardHandler --> Entity : player
     CardHandler --> Entity : enemy
@@ -280,11 +346,4 @@ class Main {
     TurnHandler --> LevelHandler
     Level1 --> PythonEnemyAI
     Level2 --> CPlusEnemyAI
-    Attack -- Card
-    JavaAttack -- Card
-    Memory -- Card
-    Infinite -- Card
-    Firewall -- Card
-    Parry -- Card
-    Polymorphism -- Card
-
+    CardInitializer --> Card

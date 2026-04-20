@@ -16,6 +16,7 @@ public class ArtLoader
     public static BufferedImage cardArt;
     public static BufferedImage endTurnArt;
     public static BufferedImage logoArt;
+    public static BufferedImage winScreenArt;
     public static BufferedImage menuTextArt;
     public static BufferedImage shieldArt;
     public static BufferedImage parryArt;
@@ -84,6 +85,7 @@ public class ArtLoader
             shieldArt = ImageIO.read(new File("UIAssets/shield.png"));
             logoArt = ImageIO.read(new File("UIAssets/logo.png"));
             menuTextArt = ImageIO.read(new File("UIAssets/menutext.png"));
+            winScreenArt = ImageIO.read(new File("UIAssets/winscreen.png"));
 
         }catch (Exception e)
         {
