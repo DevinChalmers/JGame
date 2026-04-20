@@ -2,6 +2,7 @@
 *Made by Devin Chalmers*
 
 A turn-based card game built in Java, inspired by [Slay The Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/) and programming themed.
+[GitHub](https://github.com/DevinChalmers/JGame)
 
 ## How to run
 1. Make sure you have Java installed (j17+ should be fine)
