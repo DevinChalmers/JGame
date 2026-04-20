@@ -146,6 +146,7 @@ public class CardHandler
                         else
                         {
                             System.out.println("Not enough energy!");
+                            ArtLoader.playSound(ArtLoader.noEnergySound, -15);
                         }
                     }
                     else

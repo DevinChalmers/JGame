@@ -12,7 +12,7 @@ public class Level2 extends BaseLevel
     public Level2(LevelHandler LevelH, TurnHandler turnH)
     {
         super(LevelH, turnH, 100);
-        energyReplenishAmount = 3;
+        energyReplenishAmount = 4;
         this.LevelH = LevelH;
         this.turnH = turnH;
     }
@@ -35,7 +35,7 @@ public class Level2 extends BaseLevel
     public void init(int playerStartingHealth)
     {
         player = new Entity(playerStartingHealth, 100, 0, "Player");
-        enemy = new Entity(500, 500, 50, "C-Plus-Plus");
+        enemy = new Entity(500, 500, 50, "Sea Plus-Plus", this);
         enemyAI = new CPlusEnemyAI(player, enemy, LevelH);
 
         CH = new CardHandler(player, enemy, LevelH,5);
@@ -45,8 +45,56 @@ public class Level2 extends BaseLevel
         initialized = true;
     }
 
+
+
+
+    //RENDERING BACKGROUND
     public void renderBackground(Graphics2D g2)
     {
-        g2.drawImage(ArtLoader.level1Background, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null);
+        frameCount++;
+
+        if (frameCount >= 60)
+        {
+            frameStatus = !frameStatus;
+            frameCount = 0;
+            canGetFrameCount = true;
+        }
+
+        if (frameStatus && !enemyHit)
+        {
+            g2.drawImage(ArtLoader.seaFrame1, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null); //idleframe
+        }
+        else if (!frameStatus && !enemyHit)
+        {
+            g2.drawImage(ArtLoader.seaFrame2, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null); //idleframe2
+        }
+        else
+        {
+            g2.drawImage(ArtLoader.seaFrameHit, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null); //hit frame
+            getPreviousFrameCount();
+
+            if (frameCount >= previousframeCount + 5)
+            {
+                enemyHit = false;
+            }
+            else
+            {
+                System.out.println(previousframeCount);
+            }
+
+        }
     }
+
+    int previousframeCount;
+    boolean canGetFrameCount = true;
+    public void getPreviousFrameCount()
+    {
+        if (canGetFrameCount)
+        {
+            previousframeCount = frameCount;
+            canGetFrameCount = false;
+        }
+    }
+
+
 }

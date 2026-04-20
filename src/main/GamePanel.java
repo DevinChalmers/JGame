@@ -80,7 +80,13 @@ public class GamePanel extends JPanel implements Runnable
 
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR); //makes pixel art correct
 
-        LevelH.renderLevel(g2);
+        try
+        {
+            LevelH.renderLevel(g2);
+        } catch (InterruptedException e)
+        {
+            throw new RuntimeException(e);
+        }
 
         g2.dispose();
     }

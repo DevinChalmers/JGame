@@ -57,7 +57,7 @@ public class BaseLevel
         }
     }
 
-    public void renderBackground(Graphics2D g2)
+    public void renderBackground(Graphics2D g2) throws InterruptedException
     {
 
     }

@@ -24,14 +24,23 @@ public class ArtLoader
     public static BufferedImage segfaultArt;
     public static BufferedImage compileArt;
     public static BufferedImage pingArt;
-    public static BufferedImage level1Background;
+    public static BufferedImage polyArt;
+
+    public static BufferedImage seaFrame1;
+    public static BufferedImage seaFrame2;
+    public static BufferedImage seaFrameHit;
+
     public static BufferedImage pythonFrame1;
     public static BufferedImage pythonFrame2;
+    public static BufferedImage pythonFrameHit;
 
     public static Clip shieldSound;
     public static Clip cardHover;
     public static Clip attackSound;
     public static Clip skillSound;
+    public static Clip enemyHurtSound;
+    public static Clip playerHurtSound;
+    public static Clip noEnergySound;
 
     public static Font perfectFont;
     public static Font smallPerfectFont;
@@ -51,16 +60,22 @@ public class ArtLoader
             segfaultArt = ImageIO.read(new File("cardAssets/segfault.png"));
             pingArt = ImageIO.read(new File("cardAssets/ping.png"));
             compileArt = ImageIO.read(new File("cardAssets/compile.png"));
+            polyArt = ImageIO.read(new File("cardAssets/poly.png"));
 
             cardHover = loadSound("SoundEffects/cardHover.wav");
             attackSound = loadSound("SoundEffects/attack.wav");
             shieldSound = loadSound("SoundEffects/shield.wav");
             skillSound = loadSound("SoundEffects/skill.wav");
+            enemyHurtSound = loadSound("SoundEffects/hithurt.wav");
+            playerHurtSound = loadSound("SoundEffects/playerhurt.wav");
+            noEnergySound = loadSound("SoundEffects/energysound.wav");
 
-            level1Background = ImageIO.read(new File("UIAssets/bg1.png"));
             pythonFrame1 = ImageIO.read(new File("UIAssets/pythonframe1.png"));
             pythonFrame2 = ImageIO.read(new File("UIAssets/pythonframe2.png"));
-
+            pythonFrameHit = ImageIO.read(new File("UIAssets/pythonframehit3.png"));
+            seaFrame1 = ImageIO.read(new File("UIAssets/seaframe1.png"));
+            seaFrame2 = ImageIO.read(new File("UIAssets/seaframe2.png"));
+            seaFrameHit = ImageIO.read(new File("UIAssets/seaframehit.png"));
 
             endTurnArt = ImageIO.read(new File("UIAssets/endturn.png"));
             shieldArt = ImageIO.read(new File("UIAssets/shield.png"));

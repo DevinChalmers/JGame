@@ -36,7 +36,7 @@ public class Level1 extends BaseLevel
     public void init(int playerStartingHealth)
     {
         player = new Entity(playerStartingHealth, 100, 0, "Player");
-        enemy = new Entity(250, 250, 50, "Python");
+        enemy = new Entity(250, 250, 50, "Python", this);
         enemyAI = new PythonEnemyAI(player, enemy, LevelH);
 
         CH = new CardHandler(player, enemy, LevelH, 5);
@@ -47,28 +47,56 @@ public class Level1 extends BaseLevel
     }
 
 
+
+
+
+
+    //RENDERING BACKGROUND
     public void renderBackground(Graphics2D g2)
     {
         frameCount++;
-        if (frameCount >= 60 && !enemyHit)
+
+        if (frameCount >= 60)
         {
             frameStatus = !frameStatus;
             frameCount = 0;
+            canGetFrameCount = true;
         }
 
         if (frameStatus && !enemyHit)
         {
-            g2.drawImage(ArtLoader.pythonFrame1, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null);
+            g2.drawImage(ArtLoader.pythonFrame1, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null); //idleframe
         }
         else if (!frameStatus && !enemyHit)
         {
-            g2.drawImage(ArtLoader.pythonFrame2, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null);
+            g2.drawImage(ArtLoader.pythonFrame2, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null); //idleframe2
         }
         else
         {
+            g2.drawImage(ArtLoader.pythonFrameHit, 0, 0, GamePanel.screenWidth, GamePanel.screenHeight, null); //hit frame
+            getPreviousFrameCount();
+
+            if (frameCount >= previousframeCount + 5)
+            {
+                enemyHit = false;
+            }
+            else
+            {
+                System.out.println(previousframeCount);
+            }
 
         }
-
-
     }
+
+    int previousframeCount;
+    boolean canGetFrameCount = true;
+    public void getPreviousFrameCount()
+    {
+        if (canGetFrameCount)
+        {
+            previousframeCount = frameCount;
+            canGetFrameCount = false;
+        }
+    }
+
 }

@@ -22,7 +22,7 @@ public class LevelHandler
         currentLevel.init(100);
     }
 
-    public void renderLevel(Graphics2D g2)
+    public void renderLevel(Graphics2D g2) throws InterruptedException
     {
         currentLevel.updateLevel(g2, turnH);
         currentLevel.checkEndGame();

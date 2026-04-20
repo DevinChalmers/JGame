@@ -1,5 +1,10 @@
 package Entity;
 
+import Level.BaseLevel;
+import main.ArtLoader;
+
+import javax.sound.sampled.Clip;
+
 public class Entity
 {
     public int health;
@@ -8,15 +13,17 @@ public class Entity
     public HealthBar healthBar;
     public String name;
     public int vulnerability = 0;
-    public OpponentAI opponentAI;
+    public BaseLevel level;
+    public Clip hurtSound;
 
-    public Entity(int initialHealth, int MaxHealth, int initialBlock, String name, OpponentAI opponentAI)
+    public Entity(int initialHealth, int MaxHealth, int initialBlock, String name, BaseLevel level) //ONLY USE THIS CONSTRUCTOR FOR ENEMIES
     {
         health = initialHealth;
         this.maxHealth = MaxHealth; //stores max health for later
         block = initialBlock;
         this.name = name;
-        this.opponentAI = opponentAI;
+        this.level = level;
+        hurtSound = ArtLoader.enemyHurtSound;
 
         healthBar = new HealthBar(this, name);
     }
@@ -27,6 +34,8 @@ public class Entity
         this.maxHealth = MaxHealth; //stores max health for later
         block = initialBlock;
         this.name = name;
+        this.level = level;
+        hurtSound = ArtLoader.playerHurtSound;
 
         healthBar = new HealthBar(this, name);
     }
@@ -47,6 +56,9 @@ public class Entity
                 int remainingDamage = block - incoming;
                 block = 0;
                 health = health + remainingDamage; //always - value so it subtracts
+
+                renderEntityHit();
+                ArtLoader.playSound(hurtSound, -10);
             }
             else if (remainingBlock > 0)
             {
@@ -56,7 +68,10 @@ public class Entity
         else if (block <= 0)
         {
             health = health - incoming;
+            renderEntityHit();
+            ArtLoader.playSound(hurtSound, -10);
         }
+
 
         System.out.println("HEALTH: " + health + " SHIELD: " + block);
     }
@@ -81,6 +96,14 @@ public class Entity
         if (vulnerability > 0)
         {
             vulnerability -= 1;
+        }
+    }
+
+    public void renderEntityHit()
+    {
+        if (level != null)
+        {
+            level.enemyHit = true;
         }
     }
 }
