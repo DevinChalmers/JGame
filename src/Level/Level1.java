@@ -99,4 +99,18 @@ public class Level1 extends BaseLevel
         }
     }
 
+    @Override
+    public void checkEndGame()
+{
+    if (player != null && player.health <= 0)
+    {
+        System.exit(0); //closes game
+    }
+    if (player != null && enemy.health <= 0)
+    {
+        LevelH.currentLevel = LevelH.Level2;
+        LevelH.currentLevel.init(player.health);
+    }
+}
+
 }

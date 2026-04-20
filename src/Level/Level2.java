@@ -35,7 +35,7 @@ public class Level2 extends BaseLevel
     public void init(int playerStartingHealth)
     {
         player = new Entity(playerStartingHealth, 100, 0, "Player");
-        enemy = new Entity(500, 500, 50, "Sea Plus-Plus", this);
+        enemy = new Entity(500, 500, 15, "Sea Plus-Plus", this);
         enemyAI = new CPlusEnemyAI(player, enemy, LevelH);
 
         CH = new CardHandler(player, enemy, LevelH,5);
@@ -96,5 +96,15 @@ public class Level2 extends BaseLevel
         }
     }
 
+    @Override
+    public void checkEndGame()
+    {
+        if (player != null && player.health <= 0) {
+            System.exit(0); //closes game
+        }
+        if (player != null && enemy.health <= 0) {
+            System.exit(0); //closes game
+        }
+    }
 
 }

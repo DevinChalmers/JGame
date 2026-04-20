@@ -1,4 +1,6 @@
 package main;
+import Level.StartMenu;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -22,6 +24,12 @@ public class MouseListener extends MouseAdapter
         {
             gp.LevelH.currentLevel.CH.checkCardClick(mouseX, mouseY);
             gp.LevelH.turnH.checkEndTurn(mouseX, mouseY);
+        }
+
+        if (gp.LevelH.currentLevel instanceof StartMenu)
+        {
+            gp.LevelH.currentLevel = gp.LevelH.Level1;
+            gp.LevelH.currentLevel.init(100); //THIS STARTS GAME WITH LEVEL 1
         }
     }
 
