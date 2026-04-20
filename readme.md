@@ -25,7 +25,7 @@ Make sure the `cardAssets/`, `UIAssets/`, and `SoundEffects/` folders are in you
 ### Why is the program not running in VSCode?!
 - For some reason, sometimes I have trouble running it in VSCode, though the fix is simple.
 - Press Ctrl + Shift + P
-- Type "Clean Java Language Server Workspace" and press enter. Click "Reload and delete" in the bottom right color to apply the changes and the game should now work.
+- Type "Clean Java Language Server Workspace" and press enter. Click "Reload and delete" in the bottom right corner to apply the changes and the game should now work.
 
 ### How do I scale the window?
 - In `/src/main/GamePanel.java`, you will find a *Scale Window* variable in which you can scale the window. 3 or 4 is recommended.
